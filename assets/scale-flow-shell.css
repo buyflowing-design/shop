@@ -167,6 +167,51 @@
   box-shadow: 0 0 20px rgb(0 245 255 / 24%);
 }
 
+/* Cart drawer */
+.sf-shell-ready .cart-drawer__dialog,
+.sf-shell-ready .cart-drawer__inner,
+.sf-shell-ready .cart-drawer__content,
+.sf-shell-ready .cart-drawer__summary {
+  background: #050505 !important;
+  color: #ffffff !important;
+}
+
+.sf-shell-ready .cart-drawer .quantity-selector {
+  border: 1px solid rgb(0 245 255 / 48%) !important;
+  background: linear-gradient(90deg, rgb(0 245 255 / 18%), rgb(99 102 241 / 22%)) !important;
+  color: #eaffff !important;
+}
+
+.sf-shell-ready .cart-drawer .quantity-selector :is(.quantity-minus, .quantity-plus) {
+  color: #00f5ff !important;
+}
+
+.sf-shell-ready .cart-drawer .quantity-selector input[type='number'] {
+  color: #ffffff !important;
+}
+
+.sf-shell-ready .cart-drawer :is(.button, button, [type='submit']) {
+  background: linear-gradient(90deg, #00f5ff, #6366f1) !important;
+  color: #031018 !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 20px rgb(0 245 255 / 24%);
+}
+
+.sf-shell-ready .cart-drawer :is(.button[disabled], button[disabled], [type='submit'][disabled]) {
+  opacity: 0.85 !important;
+}
+
+.sf-shell-ready .cart-drawer [class*='price'] {
+  color: #00f5ff !important;
+  text-shadow: 0 0 10px rgb(0 245 255 / 32%);
+}
+
+/* Hide top header while cart drawer is open */
+.sf-shell-ready:has(.cart-drawer__dialog[open]) #header-group {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* Recommended products */
 .sf-shell-ready .product-recommendations,
 .sf-shell-ready .product-recommendations .section-background,
