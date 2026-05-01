@@ -210,6 +210,13 @@
 .sf-shell-ready .content-for-layout[data-template*='collection'] .section-background,
 .sf-shell-ready .content-for-layout[data-template*='collection'] .section {
   background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='collection'] .section-background {
+  opacity: 0 !important;
+  display: none !important;
 }
 
 .sf-shell-ready .content-for-layout[data-template*='collection'] .shopify-section {
