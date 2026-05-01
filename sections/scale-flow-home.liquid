@@ -153,7 +153,8 @@
   </div>
 
   {% if featured_collection != blank %}
-    <div class="sf-home__section">
+    <div class="sf-home__section sf-home__section--featured">
+      <h2>{{ section.settings.featured_title }}</h2>
       <div class="sf-home__streams-grid">
         {% for product in featured_collection.products limit: 3 %}
           <article class="sf-home__stream-card sf-home__panel">
@@ -478,6 +479,23 @@
     padding: 1.6rem;
   }
 
+  .sf-home__section--featured {
+    min-height: auto;
+    justify-content: flex-start;
+    margin-top: -2rem;
+  }
+
+  .sf-home__section--featured h2 {
+    text-align: left;
+    margin: 0;
+    max-width: none;
+    font: 800 clamp(2rem, 4.4vw, 3.15rem) / 1.1 Outfit, Inter, sans-serif;
+  }
+
+  .sf-home__section--featured .sf-home__streams-grid {
+    margin-top: 1.35rem;
+  }
+
   .sf-home__stream-label {
     margin: 0 0 0.75rem;
     font-size: 0.72rem;
@@ -622,6 +640,10 @@
       gap: 1rem;
     }
 
+    .sf-home__section--featured {
+      margin-top: -1.1rem;
+    }
+
     .sf-home__item-card {
       border-right: 1px solid rgb(255 255 255 / 12%);
     }
@@ -657,6 +679,7 @@
     { "type": "text", "id": "streams_title", "label": "Titulo streams", "default": "Elige Tu Stream" },
     { "type": "textarea", "id": "streams_text", "label": "Texto streams", "default": "Cada toolkit esta construido para un unico objetivo: crecimiento medible." },
     { "type": "text", "id": "stream_cta_label", "label": "Texto CTA stream", "default": "Explorar Stream" },
+    { "type": "text", "id": "featured_title", "label": "Titulo productos finales", "default": "Productos Destacados" },
     { "type": "collection", "id": "featured_collection", "label": "Coleccion destacada opcional" },
     { "type": "text", "id": "proof_kicker", "label": "Kicker proof", "default": "POR QUE SCALE FLOW" },
     { "type": "text", "id": "proof_title", "label": "Titulo proof", "default": "Por Que los Fundadores Eligen Scale Flow" },
