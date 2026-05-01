@@ -1,0 +1,211 @@
+<section id="ScaleFlowContact-{{ section.id }}" class="sfc spacing-style" style="{% render 'spacing-style', settings: section.settings %}">
+  <div class="sfc__bg"></div>
+  <div class="sfc__inner">
+    <h1 class="sfc__title">{{ section.settings.title }}</h1>
+    <p class="sfc__subtitle">{{ section.settings.subtitle }}</p>
+
+    {%- form 'contact', id: 'ScaleFlowContactForm', class: 'sfc__form sfc__glass' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="sfc__alert sfc__alert--success">{{ section.settings.success_message }}</p>
+      {%- endif -%}
+
+      {%- if form.errors -%}
+        <p class="sfc__alert sfc__alert--error">
+          {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+        </p>
+      {%- endif -%}
+
+      <div class="sfc__row">
+        <input
+          id="ScaleFlowContact-name"
+          class="sfc__input"
+          type="text"
+          name="contact[name]"
+          autocomplete="name"
+          value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+          placeholder="{{ section.settings.name_placeholder }}"
+        >
+        <input
+          id="ScaleFlowContact-email"
+          class="sfc__input"
+          type="email"
+          name="contact[email]"
+          autocomplete="email"
+          spellcheck="false"
+          autocapitalize="off"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          placeholder="{{ section.settings.email_placeholder }}"
+          required
+        >
+      </div>
+
+      <input
+        id="ScaleFlowContact-phone"
+        class="sfc__input"
+        type="tel"
+        name="contact[phone]"
+        autocomplete="tel"
+        value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+        placeholder="{{ section.settings.phone_placeholder }}"
+      >
+
+      <textarea
+        id="ScaleFlowContact-message"
+        class="sfc__input sfc__textarea"
+        name="contact[body]"
+        rows="7"
+        placeholder="{{ section.settings.message_placeholder }}"
+      >{{ form.body }}</textarea>
+
+      <button type="submit" class="sfc__button">{{ section.settings.button_label }}</button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .sfc {
+    --bg: #050505;
+    --cyan: #00f5ff;
+    --indigo: #6366f1;
+    --text: #ffffff;
+    --muted: #94a3b8;
+    color: var(--text);
+    background: var(--bg);
+    position: relative;
+    overflow: clip;
+    padding-inline: clamp(1rem, 2.8vw, 2rem);
+  }
+
+  .sfc__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(900px 520px at 10% 6%, rgb(0 245 255 / 16%), transparent 58%),
+      radial-gradient(900px 580px at 86% 84%, rgb(99 102 241 / 18%), transparent 62%);
+  }
+
+  .sfc__inner {
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sfc__title {
+    margin: 0;
+    font: 800 clamp(2rem, 6vw, 4rem) / 1.04 Outfit, Inter, sans-serif;
+  }
+
+  .sfc__subtitle {
+    margin: 1rem auto 0;
+    max-width: 680px;
+    color: var(--muted);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.55;
+  }
+
+  .sfc__glass {
+    margin-top: 2rem;
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: 24px;
+    background: linear-gradient(150deg, rgb(15 23 42 / 74%), rgb(15 23 42 / 56%));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 12%), 0 20px 38px rgb(0 0 0 / 32%);
+    padding: clamp(1rem, 2.2vw, 1.8rem);
+  }
+
+  .sfc__form {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .sfc__row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .sfc__input {
+    min-height: 52px;
+    border-radius: 12px;
+    border: 1px solid rgb(255 255 255 / 16%);
+    background: rgb(8 15 30 / 72%);
+    color: #f0f7ff;
+    padding: 0.8rem 0.9rem;
+    font-size: 0.96rem;
+  }
+
+  .sfc__input::placeholder {
+    color: #9db0c8;
+  }
+
+  .sfc__textarea {
+    min-height: 180px;
+    resize: vertical;
+  }
+
+  .sfc__button {
+    min-height: 52px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--cyan), var(--indigo));
+    color: #031018;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgb(0 245 255 / 26%);
+  }
+
+  .sfc__alert {
+    margin: 0;
+    border-radius: 10px;
+    padding: 0.65rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .sfc__alert--success {
+    border: 1px solid rgb(34 197 94 / 35%);
+    background: rgb(34 197 94 / 16%);
+    color: #9ff7c4;
+  }
+
+  .sfc__alert--error {
+    border: 1px solid rgb(239 68 68 / 35%);
+    background: rgb(239 68 68 / 16%);
+    color: #ffc2c2;
+  }
+
+  @media screen and (max-width: 720px) {
+    .sfc__row {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Scale Flow Contact",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titulo", "default": "Hablemos de tu crecimiento" },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitulo",
+      "default": "Cuéntanos qué quieres escalar y te responderemos con una recomendación clara en menos de 24 horas."
+    },
+    { "type": "text", "id": "name_placeholder", "label": "Placeholder nombre", "default": "Tu nombre" },
+    { "type": "text", "id": "email_placeholder", "label": "Placeholder email", "default": "tu@email.com" },
+    { "type": "text", "id": "phone_placeholder", "label": "Placeholder telefono", "default": "Tu telefono (opcional)" },
+    { "type": "text", "id": "message_placeholder", "label": "Placeholder mensaje", "default": "Cuéntanos tu caso y objetivo..." },
+    { "type": "text", "id": "button_label", "label": "Texto boton", "default": "Enviar mensaje" },
+    { "type": "text", "id": "success_message", "label": "Mensaje de exito", "default": "Mensaje enviado. Te contactaremos pronto." },
+    { "type": "range", "id": "padding-block-start", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding superior", "default": 56 },
+    { "type": "range", "id": "padding-block-end", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding inferior", "default": 80 }
+  ],
+  "presets": [
+    {
+      "name": "Scale Flow Contact"
+    }
+  ]
+}
+{% endschema %}

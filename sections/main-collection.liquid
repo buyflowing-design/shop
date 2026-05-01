@@ -25,7 +25,7 @@
 {% comment %} We always render this full-width, as the child blocks have width: page/full settings {% endcomment %}
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <results-list
-  class="section product-grid-container color-{{ section.settings.color_scheme }}"
+  class="section product-grid-container color-{{ section.settings.color_scheme }} sf-collection"
   style="--padding-block-start: {{ section.settings.padding-block-start }}px; --padding-block-end: {{ section.settings.padding-block-end }}px;"
   section-id="{{ section.id }}"
   infinite-scroll="{{ section.settings.enable_infinite_scroll }}"
@@ -75,6 +75,59 @@
     {% endpaginate %}
   </div>
 </results-list>
+
+{% stylesheet %}
+  .sf-collection {
+    --sf-bg: #050505;
+    --sf-cyan: #00f5ff;
+    --sf-indigo: #6366f1;
+    background: var(--sf-bg);
+    border-radius: 24px;
+    border: 1px solid rgb(255 255 255 / 10%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sf-collection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(900px 520px at 10% 10%, rgb(0 245 255 / 15%), transparent 58%),
+      radial-gradient(900px 600px at 90% 90%, rgb(99 102 241 / 18%), transparent 62%);
+  }
+
+  .sf-collection .collection-wrapper,
+  .sf-collection .product-grid {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sf-collection .product-grid__item > * {
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: 18px;
+    background: linear-gradient(150deg, rgb(15 23 42 / 76%), rgb(15 23 42 / 54%));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%);
+    padding: 0.8rem;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  }
+
+  .sf-collection .product-grid__item > *:hover {
+    border-color: rgb(0 245 255 / 42%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 12%), 0 0 22px rgb(0 245 255 / 20%);
+    transform: translateY(-2px);
+  }
+
+  .sf-collection :is(.facets, .facets__form, .facets__wrapper) {
+    color: #dce8fb;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sf-collection {
+      border-radius: 18px;
+    }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {

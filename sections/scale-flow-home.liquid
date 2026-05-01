@@ -11,7 +11,6 @@
     <div class="sf-home__orb sf-home__orb--br"></div>
     <div class="sf-home__shape"></div>
 
-    <p class="sf-home__kicker">{{ section.settings.hero_badge }}</p>
     <h1 class="sf-home__title">{{ section.settings.hero_title }}</h1>
     <h1 class="sf-home__title sf-home__title--gradient">{{ section.settings.hero_title_alt }}</h1>
     <p class="sf-home__subtitle">{{ section.settings.hero_text }}</p>
@@ -29,7 +28,6 @@
   </div>
 
   <div class="sf-home__section">
-    <p class="sf-home__chip">{{ section.settings.lab_kicker }}</p>
     <h2>{{ section.settings.lab_title }}</h2>
     <p class="sf-home__section-subtitle">{{ section.settings.lab_text }}</p>
 
@@ -47,7 +45,6 @@
   </div>
 
   <div class="sf-home__section">
-    <p class="sf-home__chip">{{ section.settings.streams_kicker }}</p>
     <h2>{{ section.settings.streams_title }}</h2>
     <p class="sf-home__section-subtitle">{{ section.settings.streams_text }}</p>
 
@@ -67,7 +64,6 @@
   </div>
 
   <div class="sf-home__section">
-    <p class="sf-home__chip">{{ section.settings.proof_kicker }}</p>
     <h2>{{ section.settings.proof_title }}</h2>
     <p class="sf-home__section-subtitle">{{ section.settings.proof_text }}</p>
     <div class="sf-home__proof-grid">
@@ -84,7 +80,6 @@
   </div>
 
   <div class="sf-home__section">
-    <p class="sf-home__chip">{{ section.settings.faq_kicker }}</p>
     <h2>{{ section.settings.faq_title }}</h2>
     <p class="sf-home__section-subtitle">{{ section.settings.faq_text }}</p>
     <div class="sf-home__faq-list">
@@ -100,7 +95,6 @@
   </div>
 
   <div class="sf-home__section sf-home__closing">
-    <p class="sf-home__chip">{{ section.settings.closing_kicker }}</p>
     <h2>{{ section.settings.closing_title }}</h2>
     <p class="sf-home__section-subtitle">{{ section.settings.closing_text }}</p>
     <a class="sf-home__cta sf-home__cta--primary" href="{{ section.settings.closing_cta_link | default: '#' }}">{{ section.settings.closing_cta_label }}</a>
@@ -175,22 +169,8 @@
     box-shadow: none;
   }
 
-  .sf-home__kicker,
-  .sf-home__chip {
-    display: inline-flex;
-    border-radius: 999px;
-    border: 1px solid rgb(255 255 255 / 14%);
-    background: rgb(17 24 39 / 75%);
-    color: #d6dde8;
-    padding: 0.38rem 0.9rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
   .sf-home__title {
-    margin: 0.6rem 0 0;
+    margin: 0;
     font: 800 clamp(2.45rem, 7.5vw, 5.1rem) / 1.02 Outfit, Inter, sans-serif;
   }
 
@@ -252,7 +232,7 @@
   }
 
   .sf-home h2 {
-    margin: 0.8rem auto 0;
+    margin: 0 auto;
     max-width: 900px;
     text-align: center;
     font: 800 clamp(2rem, 6.4vw, 4.45rem) / 1.08 Outfit, Inter, sans-serif;
