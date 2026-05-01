@@ -218,10 +218,9 @@
   text-shadow: 0 0 10px rgb(0 245 255 / 32%);
 }
 
-/* Hide top header while cart drawer is open */
-.sf-shell-ready:has(.cart-drawer__dialog[open]) #header-group {
-  opacity: 0 !important;
-  pointer-events: none !important;
+/* Keep cart drawer above header without blocking interactions */
+.sf-shell-ready .cart-drawer__dialog:modal {
+  z-index: 9999 !important;
 }
 
 /* Recommended products */
