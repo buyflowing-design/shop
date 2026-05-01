@@ -152,6 +152,20 @@
           {% endif %}
         {% endfor %}
       </div>
+      <div class="sfp__tools-row" aria-hidden="true">
+        {% for block in section.blocks %}
+          {% if block.type == 'tool' %}
+            <span class="sfp__tool-pill">{{ block.settings.name }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="sfp__tools-row" aria-hidden="true">
+        {% for block in section.blocks %}
+          {% if block.type == 'tool' %}
+            <span class="sfp__tool-pill">{{ block.settings.name }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
   </div>
 
@@ -588,10 +602,10 @@
   .sfp__tools-row {
     display: flex;
     justify-content: center;
-    gap: 0.7rem;
+    gap: 1.2rem;
     flex-wrap: nowrap;
     white-space: nowrap;
-    padding-right: 0.7rem;
+    padding-right: 1.2rem;
   }
 
   .sfp__tool-pill {
@@ -741,7 +755,7 @@
       transform: translateX(0);
     }
     to {
-      transform: translateX(-50%);
+      transform: translateX(-25%);
     }
   }
 
