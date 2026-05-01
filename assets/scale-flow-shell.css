@@ -261,9 +261,10 @@
   letter-spacing: 0.01em;
 }
 
-.sf-shell-ready .content-for-layout[data-template*='cart'] .section--page-width .cart-page:has(.cart-summary--extend) {
-  grid-column: 2 !important;
-  grid-template-columns: 1fr min(50vw, var(--sidebar-width)) !important;
+.sf-shell-ready .content-for-layout[data-template*='cart'] .section--page-width .cart-page {
+  width: 100% !important;
+  max-width: var(--page-width);
+  margin-inline: auto;
 }
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .cart-page__items,
