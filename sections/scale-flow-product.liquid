@@ -69,7 +69,10 @@
   </div>
 
   <div class="sfp__ticker sfp__glass">
-    <p>{{ section.settings.ticker_text }}</p>
+    <div class="sfp__ticker-track">
+      <span>{{ section.settings.ticker_text }}</span>
+      <span aria-hidden="true">{{ section.settings.ticker_text }}</span>
+    </div>
   </div>
 
   <div class="sfp__section">
@@ -191,7 +194,6 @@
   .sfp__hero,
   .sfp__section,
   .sfp__tools,
-  .sfp__ticker,
   .sfp__final {
     max-width: 1120px;
     margin: 0 auto;
@@ -346,24 +348,36 @@
 
   .sfp__ticker {
     margin-top: 1rem;
-    padding: 0.5rem 0.9rem;
+    padding: 0.5rem 0;
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    border-radius: 0;
+    border-inline: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
   }
 
-  .sfp__ticker p {
-    margin: 0;
-    text-align: center;
+  .sfp__ticker-track {
+    display: flex;
+    width: max-content;
+    gap: 2.5rem;
+    white-space: nowrap;
+    animation: sfpTicker 22s linear infinite;
+  }
+
+  .sfp__ticker-track span {
     font-weight: 700;
     color: #e9f5ff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    letter-spacing: 0.01em;
   }
 
   .sfp__section {
     margin-top: 0;
     padding-top: 3.1rem;
     text-align: center;
-    border-top: 1px solid rgb(255 255 255 / 8%);
   }
 
   .sfp h2 {
@@ -521,7 +535,6 @@
     margin-top: 2.4rem;
     padding: 1.2rem 1rem;
     text-align: center;
-    border-top: 1px solid rgb(255 255 255 / 8%);
   }
 
   .sfp__tools-row {
@@ -550,6 +563,17 @@
   .sfp__faq-item {
     padding: 0.95rem 1rem;
     text-align: left;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+
+  .sfp__faq-item:hover {
+    border-color: rgb(0 245 255 / 55%);
+    background: linear-gradient(150deg, rgb(0 245 255 / 16%), rgb(99 102 241 / 20%));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 16%), 0 0 18px rgb(0 245 255 / 25%);
+  }
+
+  .sfp__faq-item:hover summary {
+    color: #dff9ff;
   }
 
   .sfp__faq-item summary {
@@ -638,6 +662,15 @@
     margin-top: 0.7rem;
     color: #f7cc78;
     font-size: 0.79rem;
+  }
+
+  @keyframes sfpTicker {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   @media screen and (max-width: 980px) {
