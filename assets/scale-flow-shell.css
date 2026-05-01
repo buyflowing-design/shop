@@ -128,6 +128,25 @@
   color: #dff9ff !important;
 }
 
+/* Collection pages */
+.sf-shell-ready .content-for-layout:has([id*='shopify-section-template--'][class*='main-collection']),
+.sf-shell-ready .content-for-layout[data-template*='collection'] {
+  background: #050505 !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='collection'] .section-background,
+.sf-shell-ready .content-for-layout[data-template*='collection'] .section {
+  background: transparent !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='collection'] :is(h1, h2, h3, p, a, span, label) {
+  color: #ffffff;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='collection'] [class*='price'] {
+  color: #dff9ff !important;
+}
+
 /* Neon icon language */
 .sf-shell-ready :is(#header-group, footer, .cart-page) .svg-wrapper svg,
 .sf-shell-ready :is(#header-group, footer, .cart-page) .icon svg,
