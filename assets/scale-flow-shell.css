@@ -29,6 +29,29 @@
   background: linear-gradient(180deg, rgb(5 5 5 / 88%), rgb(5 5 5 / 62%)) !important;
 }
 
+.sf-shell-ready #header-group:hover,
+.sf-shell-ready #header-group:focus-within,
+.sf-shell-ready #header-group:active,
+.sf-shell-ready .header:hover,
+.sf-shell-ready .header:focus-within,
+.sf-shell-ready .header__row:hover,
+.sf-shell-ready .header__row:focus-within,
+.sf-shell-ready .header-section:hover,
+.sf-shell-ready .header-section:focus-within,
+.sf-shell-ready .shopify-section-group-header-group .section-background,
+.sf-shell-ready .shopify-section-group-header-group .section-background:hover {
+  background: linear-gradient(180deg, rgb(5 5 5 / 88%), rgb(5 5 5 / 62%)) !important;
+}
+
+.sf-shell-ready #header-group::before,
+.sf-shell-ready #header-group::after,
+.sf-shell-ready .header::before,
+.sf-shell-ready .header::after,
+.sf-shell-ready .header__row::before,
+.sf-shell-ready .header__row::after {
+  background: transparent !important;
+}
+
 .sf-shell-ready .announcement-bar {
   border-bottom: 1px solid rgb(255 255 255 / 10%) !important;
   color: #e7f2ff !important;
@@ -50,11 +73,13 @@
 .sf-shell-ready .header button:hover,
 .sf-shell-ready .header summary:hover,
 .sf-shell-ready .header .menu__item:hover,
+.sf-shell-ready .header .header__heading-link:hover,
 .sf-shell-ready .header .header-actions__action:hover,
 .sf-shell-ready .header a:focus-visible,
 .sf-shell-ready .header button:focus-visible,
 .sf-shell-ready .header summary:focus-visible,
 .sf-shell-ready .header .menu__item:focus-visible,
+.sf-shell-ready .header .header__heading-link:focus-visible,
 .sf-shell-ready .header .header-actions__action:focus-visible {
   background: transparent !important;
   background-color: transparent !important;
