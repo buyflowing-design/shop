@@ -300,6 +300,10 @@
   gap: 0.45rem;
   box-shadow: none !important;
   padding: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  overflow: visible !important;
+  flex: 0 0 auto !important;
 }
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector :is(.quantity-minus, .quantity-plus) {
@@ -329,6 +333,7 @@
   background: linear-gradient(145deg, rgb(7 14 28 / 96%), rgb(20 28 52 / 92%)) !important;
   box-shadow: 0 0 16px rgb(99 102 241 / 22%);
   text-align: center !important;
+  max-width: none !important;
 }
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector .quantity-plus {
@@ -341,6 +346,7 @@
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .cart-items__quantity-controls {
   gap: 0.6rem !important;
+  flex-wrap: nowrap !important;
 }
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .cart-items__remove {
