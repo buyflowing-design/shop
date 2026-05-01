@@ -187,8 +187,9 @@
   .product-recommendations .section-resource-list::before {
     content: '';
     position: absolute;
-    inset: 0;
+    inset: -140px -90px -90px;
     pointer-events: none;
+    z-index: 0;
     background: radial-gradient(700px 420px at 8% 12%, rgb(0 245 255 / 14%), transparent 58%),
       radial-gradient(700px 480px at 92% 90%, rgb(99 102 241 / 18%), transparent 62%);
   }
@@ -197,6 +198,10 @@
   .product-recommendations .resource-list {
     position: relative;
     z-index: 1;
+  }
+
+  .product-recommendations .section-resource-list__content :is(h1, h2, h3, h4, p, a, span) {
+    color: #eaf4ff;
   }
 
   .product-recommendations .resource-list__item > * {
