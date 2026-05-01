@@ -173,6 +173,14 @@
 </product-recommendations>
 
 {% stylesheet %}
+  .shopify-section:has(.product-recommendations) {
+    overflow: visible;
+  }
+
+  .product-recommendations {
+    overflow: visible;
+  }
+
   .product-recommendations .section-resource-list {
     --sf-bg: #050505;
     --sf-cyan: #00f5ff;
@@ -187,7 +195,7 @@
   .product-recommendations .section-resource-list::before {
     content: '';
     position: absolute;
-    inset: -280px -140px -130px;
+    inset: -420px -180px -140px;
     pointer-events: none;
     z-index: 0;
     background: radial-gradient(700px 420px at 8% 12%, rgb(0 245 255 / 14%), transparent 58%),
