@@ -202,14 +202,14 @@
   color: #ffffff !important;
 }
 
-.sf-shell-ready .cart-drawer :is(.button, button, [type='submit']) {
+.sf-shell-ready .cart-drawer .cart__checkout-button.button {
   background: linear-gradient(90deg, #00f5ff, #6366f1) !important;
   color: #031018 !important;
   border-color: transparent !important;
   box-shadow: 0 0 20px rgb(0 245 255 / 24%);
 }
 
-.sf-shell-ready .cart-drawer :is(.button[disabled], button[disabled], [type='submit'][disabled]) {
+.sf-shell-ready .cart-drawer .cart__checkout-button.button[disabled] {
   opacity: 0.85 !important;
 }
 
