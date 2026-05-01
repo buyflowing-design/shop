@@ -81,11 +81,9 @@
     --sf-bg: #050505;
     --sf-cyan: #00f5ff;
     --sf-indigo: #6366f1;
-    background: var(--sf-bg);
-    border-radius: 24px;
-    border: 1px solid rgb(255 255 255 / 10%);
+    background: transparent;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .sf-collection::before {
@@ -124,7 +122,7 @@
 
   @media screen and (max-width: 749px) {
     .sf-collection {
-      border-radius: 18px;
+      border-radius: 0;
     }
   }
 {% endstylesheet %}
