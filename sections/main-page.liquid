@@ -7,7 +7,7 @@
   endif
 %}
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<div class="section page-width-content color-{{ section.settings.color_scheme }}{% if is_contact_page %} sf-contact-fallback{% endif %}">
+<div class="section{% unless is_contact_page %} page-width-content{% endunless %} color-{{ section.settings.color_scheme }}{% if is_contact_page %} sf-contact-fallback{% endif %}">
   <div
     class="
       spacing-style
@@ -64,10 +64,14 @@
     position: relative;
     overflow: clip;
     padding-inline: clamp(1rem, 2.8vw, 2rem);
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
   }
 
   .sf-contact-fallback .section-content-wrapper {
     position: relative;
+    width: 100%;
+    max-width: none !important;
   }
 
   .sf-contact-fallback .sfc__bg {
