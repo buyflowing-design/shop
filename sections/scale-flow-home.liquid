@@ -21,12 +21,18 @@
     <div class="scale-flow__hero-content">
       <p class="scale-flow__badge">{{ section.settings.hero_badge }}</p>
       <h1>{{ section.settings.hero_title }}</h1>
+      <h1 class="scale-flow__hero-title-alt">{{ section.settings.hero_title_alt }}</h1>
       <p class="scale-flow__hero-copy">{{ section.settings.hero_text }}</p>
       {% if section.settings.hero_cta_label != blank %}
         <a class="scale-flow__cta" href="{{ section.settings.hero_cta_link | default: '#' }}">
           {{ section.settings.hero_cta_label }}
         </a>
       {% endif %}
+    </div>
+    <div class="scale-flow__trust-row">
+      <span>{{ section.settings.trust_1 }}</span>
+      <span>{{ section.settings.trust_2 }}</span>
+      <span>{{ section.settings.trust_3 }}</span>
     </div>
   </div>
 
@@ -168,6 +174,16 @@
       {% endfor %}
     </div>
   </div>
+
+  <div class="scale-flow__section scale-flow__closing scale-flow__glass-panel">
+    <h2>{{ section.settings.closing_title }}</h2>
+    <p class="scale-flow__section-copy">{{ section.settings.closing_text }}</p>
+    {% if section.settings.closing_cta_label != blank %}
+      <a class="scale-flow__cta" href="{{ section.settings.closing_cta_link | default: '#' }}">
+        {{ section.settings.closing_cta_label }}
+      </a>
+    {% endif %}
+  </div>
 </section>
 
 {% stylesheet %}
@@ -249,9 +265,17 @@
   }
 
   .scale-flow h1 {
-    margin: 0.75rem 0 1rem;
+    margin: 0.25rem 0;
     font-size: clamp(2rem, 5vw, 4rem);
     line-height: 1.08;
+  }
+
+  .scale-flow__hero-title-alt {
+    color: transparent;
+    background: linear-gradient(120deg, var(--sf-cyan), var(--sf-indigo));
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin-bottom: 1rem;
   }
 
   .scale-flow__hero-copy,
@@ -295,6 +319,23 @@
   .scale-flow__cta:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 26px rgb(99 102 241 / 46%);
+  }
+
+  .scale-flow__trust-row {
+    margin-top: 1.6rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #d8e7f3;
+    font-size: 0.9rem;
+  }
+
+  .scale-flow__trust-row span {
+    border: 1px solid rgb(255 255 255 / 15%);
+    border-radius: 12px;
+    padding: 0.42rem 0.75rem;
+    background: rgb(15 23 42 / 45%);
   }
 
   .scale-flow__section {
@@ -409,6 +450,10 @@
 
   .scale-flow__stat-card p {
     margin: 0.35rem 0 0;
+  }
+
+  .scale-flow__closing {
+    text-align: center;
   }
 
   .scale-flow__stream-label {
@@ -666,24 +711,48 @@
       "type": "text",
       "id": "hero_title",
       "label": "Titulo principal",
-      "default": "Scale Faster with Expert Intelligence + AI Automation"
+      "default": "Escala Mas Inteligente."
+    },
+    {
+      "type": "text",
+      "id": "hero_title_alt",
+      "label": "Titulo principal linea 2",
+      "default": "Fluye Mas Lejos."
     },
     {
       "type": "textarea",
       "id": "hero_text",
       "label": "Texto principal",
-      "default": "Unlock expert-verified guides, toolkits, and automation systems engineered to accelerate ecommerce, growth marketing, and operational scale."
+      "default": "Accede a guias verificadas, toolkits y blueprints de automatizacion para escalar tu negocio con Inteligencia Hibrida."
     },
     {
       "type": "text",
       "id": "hero_cta_label",
       "label": "Texto del boton CTA",
-      "default": "Explore the Vault"
+      "default": "Explorar Catalogo"
     },
     {
       "type": "url",
       "id": "hero_cta_link",
       "label": "Enlace del boton CTA"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust item 1",
+      "default": "Verificado por expertos"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust item 2",
+      "default": "Descarga instantanea"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust item 3",
+      "default": "Mas de 10,000 fundadores"
     },
     {
       "type": "header",
@@ -699,13 +768,13 @@
       "type": "text",
       "id": "lab_title",
       "label": "Titulo The Lab",
-      "default": "Methodology Built for Hybrid Intelligence"
+      "default": "Impulsado por Inteligencia Hibrida"
     },
     {
       "type": "textarea",
       "id": "lab_text",
       "label": "Texto The Lab",
-      "default": "We combine human strategic expertise with AI execution speed so every asset you buy creates measurable growth momentum."
+      "default": "Combinamos el juicio irremplazable de expertos humanos con la velocidad de la IA para generar estrategias que realmente funcionan."
     },
     {
       "type": "header",
@@ -721,13 +790,13 @@
       "type": "text",
       "id": "featured_title",
       "label": "Titulo destacados",
-      "default": "CreativeScale, SalesScale, BizScale"
+      "default": "Elige Tu Stream"
     },
     {
       "type": "textarea",
       "id": "featured_text",
       "label": "Texto destacados",
-      "default": "Deploy plug-and-play digital systems that remove friction and compound performance."
+      "default": "Cada toolkit esta construido para un unico objetivo: crecimiento medible."
     },
     {
       "type": "collection",
@@ -757,7 +826,7 @@
       "type": "text",
       "id": "faq_title",
       "label": "Titulo FAQ",
-      "default": "Frequently Asked Questions"
+      "default": "Todo Lo Que Necesitas Saber"
     },
     {
       "type": "header",
@@ -779,7 +848,34 @@
       "type": "textarea",
       "id": "proof_text",
       "label": "Texto prueba social",
-      "default": "Construido por operadores y validado en el terreno real para generar crecimiento medible."
+      "default": "Construido por operadores, validado en las trincheras y respaldado por miles de fundadores."
+    },
+    {
+      "type": "header",
+      "content": "Cierre CTA"
+    },
+    {
+      "type": "text",
+      "id": "closing_title",
+      "label": "Titulo cierre",
+      "default": "¿Listo para Escalar Mas Inteligente?"
+    },
+    {
+      "type": "textarea",
+      "id": "closing_text",
+      "label": "Texto cierre",
+      "default": "Activa tus sistemas y transforma tu crecimiento con playbooks accionables desde hoy."
+    },
+    {
+      "type": "text",
+      "id": "closing_cta_label",
+      "label": "Texto CTA cierre",
+      "default": "Explorar Catalogo"
+    },
+    {
+      "type": "url",
+      "id": "closing_cta_link",
+      "label": "Enlace CTA cierre"
     },
     {
       "type": "header",

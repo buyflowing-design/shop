@@ -116,6 +116,69 @@
       </div>
     </div>
   {% endif %}
+
+  <div class="sf-product__ticker sf-product__glass">
+    <p>{{ section.settings.ticker_text }}</p>
+  </div>
+
+  <div class="sf-product__reviews sf-product__glass">
+    <div class="sf-product__extras-heading">
+      <p>{{ section.settings.reviews_kicker }}</p>
+      <h2>{{ section.settings.reviews_title }}</h2>
+      <p>{{ section.settings.reviews_text }}</p>
+    </div>
+    <div class="sf-product__reviews-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'review' %}
+          <article class="sf-product__review-card" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.author }}</h3>
+            <p class="sf-product__review-location">{{ block.settings.location }}</p>
+            <p>{{ block.settings.quote }}</p>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="sf-product__numbers sf-product__glass">
+    <div class="sf-product__extras-heading">
+      <p>{{ section.settings.numbers_kicker }}</p>
+      <h2>{{ section.settings.numbers_title }}</h2>
+    </div>
+    <div class="sf-product__numbers-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'number' %}
+          <article class="sf-product__number-card" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.metric }}</h3>
+            <p>{{ block.settings.label }}</p>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="sf-product__faq sf-product__glass">
+    <div class="sf-product__extras-heading">
+      <p>{{ section.settings.faq_kicker }}</p>
+      <h2>{{ section.settings.faq_title }}</h2>
+    </div>
+    <div class="sf-product__faq-list">
+      {% for block in section.blocks %}
+        {% if block.type == 'faq' %}
+          <details class="sf-product__faq-item" {{ block.shopify_attributes }}>
+            <summary>{{ block.settings.question }}</summary>
+            <p>{{ block.settings.answer }}</p>
+          </details>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="sf-product__final sf-product__glass">
+    <h2>{{ section.settings.final_title }}</h2>
+    <p>{{ section.settings.final_text }}</p>
+    <a href="{{ product.url }}?variant={{ current_variant.id }}" class="sf-product__cta">{{ section.settings.final_cta }}</a>
+  </div>
 </section>
 
 {% stylesheet %}
@@ -323,6 +386,26 @@
     padding: clamp(1.1rem, 3vw, 1.8rem);
   }
 
+  .sf-product__ticker,
+  .sf-product__reviews,
+  .sf-product__numbers,
+  .sf-product__faq,
+  .sf-product__final {
+    margin-top: 1rem;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding: clamp(1rem, 2.6vw, 1.6rem);
+    position: relative;
+    z-index: 1;
+  }
+
+  .sf-product__ticker p {
+    margin: 0;
+    text-align: center;
+    color: #d8f7fa;
+    font-weight: 700;
+  }
+
   .sf-product__extras-heading {
     text-align: center;
     margin-bottom: 1rem;
@@ -370,6 +453,77 @@
     line-height: 1.5;
   }
 
+  .sf-product__reviews-grid,
+  .sf-product__numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .sf-product__review-card,
+  .sf-product__number-card {
+    border: 1px solid rgb(255 255 255 / 14%);
+    border-radius: 16px;
+    background: rgb(15 23 42 / 45%);
+    padding: 1rem;
+  }
+
+  .sf-product__review-card h3,
+  .sf-product__number-card h3 {
+    margin: 0;
+    color: #fff;
+  }
+
+  .sf-product__review-location {
+    margin: 0.25rem 0 0.6rem;
+    color: var(--sf-cyan);
+    font-size: 0.85rem;
+  }
+
+  .sf-product__number-card {
+    text-align: center;
+  }
+
+  .sf-product__number-card h3 {
+    color: var(--sf-cyan);
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+  }
+
+  .sf-product__faq-list {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .sf-product__faq-item {
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: 12px;
+    padding: 0.8rem;
+    background: rgb(15 23 42 / 42%);
+  }
+
+  .sf-product__faq-item summary {
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .sf-product__faq-item p {
+    margin: 0.6rem 0 0;
+  }
+
+  .sf-product__final {
+    text-align: center;
+  }
+
+  .sf-product__final h2 {
+    margin: 0 0 0.4rem;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+  }
+
+  .sf-product__final p {
+    margin: 0 0 1rem;
+  }
+
   @media screen and (max-width: 980px) {
     .sf-product__inner {
       grid-template-columns: 1fr;
@@ -382,10 +536,20 @@
     .sf-product__extras-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .sf-product__reviews-grid,
+    .sf-product__numbers-grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media screen and (max-width: 620px) {
     .sf-product__extras-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .sf-product__reviews-grid,
+    .sf-product__numbers-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -486,6 +650,72 @@
       "default": "Un arsenal completo para ejecutar resultados reales con inteligencia hibrida."
     },
     {
+      "type": "text",
+      "id": "ticker_text",
+      "label": "Ticker texto",
+      "default": "⚡ +12.000 fundadores ya estan escalando · 🔥 247 copias vendidas este mes · ⭐ Valoracion media 4.9/5"
+    },
+    {
+      "type": "text",
+      "id": "reviews_kicker",
+      "label": "Reviews kicker",
+      "default": "RESEÑAS VERIFICADAS"
+    },
+    {
+      "type": "text",
+      "id": "reviews_title",
+      "label": "Reviews titulo",
+      "default": "Lo que dicen nuestros clientes"
+    },
+    {
+      "type": "textarea",
+      "id": "reviews_text",
+      "label": "Reviews texto",
+      "default": "Valoracion media 4.9 basada en cientos de opiniones verificadas."
+    },
+    {
+      "type": "text",
+      "id": "numbers_kicker",
+      "label": "Numeros kicker",
+      "default": "IMPACTO"
+    },
+    {
+      "type": "text",
+      "id": "numbers_title",
+      "label": "Numeros titulo",
+      "default": "Numeros que hablan solos"
+    },
+    {
+      "type": "text",
+      "id": "faq_kicker",
+      "label": "FAQ kicker",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "FAQ titulo",
+      "default": "Preguntas Frecuentes"
+    },
+    {
+      "type": "text",
+      "id": "final_title",
+      "label": "Titulo cierre",
+      "default": "Empieza a Crear con IA Hoy"
+    },
+    {
+      "type": "textarea",
+      "id": "final_text",
+      "label": "Texto cierre",
+      "default": "Accede ahora al toolkit y ejecuta un sistema probado para producir, publicar y convertir."
+    },
+    {
+      "type": "text",
+      "id": "final_cta",
+      "label": "CTA cierre",
+      "default": "Obtener Acceso Ahora"
+    },
+    {
       "type": "range",
       "id": "padding-block-start",
       "label": "Padding superior",
@@ -530,6 +760,66 @@
           "default": "Prompts probados para producir piezas visuales premium en minutos."
         }
       ]
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Autor",
+          "default": "Marcos R."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Ubicacion",
+          "default": "Madrid"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Texto",
+          "default": "En menos de una semana transforme mi flujo de contenido con resultados visibles."
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "Numero",
+      "settings": [
+        {
+          "type": "text",
+          "id": "metric",
+          "label": "Metrica",
+          "default": "12K+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta",
+          "default": "Fundadores"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pregunta",
+          "default": "¿Recibo actualizaciones futuras?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Respuesta",
+          "default": "Si. Tu compra incluye todas las actualizaciones presentes y futuras sin coste adicional."
+        }
+      ]
     }
   ],
   "presets": [
@@ -559,9 +849,75 @@
             "title": "Actualizaciones de por vida",
             "text": "Actualizaciones continuas para mantenerte al dia con nuevas herramientas."
           }
+        },
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "author": "Marcos R.",
+            "location": "Madrid",
+            "quote": "En menos de una semana transforme mi flujo de contenido con resultados visibles."
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "author": "Paula S.",
+            "location": "Barcelona",
+            "quote": "Los prompts y plantillas me ahorran horas y elevan la calidad de mis piezas."
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "author": "Diego M.",
+            "location": "Valencia",
+            "quote": "La estructura es clara, accionable y me dio traccion real en menos de 48h."
+          }
+        },
+        "number_1": {
+          "type": "number",
+          "settings": {
+            "metric": "12K+",
+            "label": "Fundadores"
+          }
+        },
+        "number_2": {
+          "type": "number",
+          "settings": {
+            "metric": "4.9/5",
+            "label": "Valoracion media"
+          }
+        },
+        "number_3": {
+          "type": "number",
+          "settings": {
+            "metric": "48h",
+            "label": "Primeros resultados"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Recibo actualizaciones futuras?",
+            "answer": "Si. Tu compra incluye todas las actualizaciones presentes y futuras sin coste adicional."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Necesito experiencia previa?",
+            "answer": "No. El sistema viene paso a paso para que puedas aplicarlo aunque estes empezando."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cuando recibo acceso?",
+            "answer": "El acceso se entrega al instante tras confirmar la compra."
+          }
         }
       },
-      "block_order": ["feature_1", "feature_2", "feature_3"]
+      "block_order": ["feature_1", "feature_2", "feature_3", "review_1", "review_2", "review_3", "number_1", "number_2", "number_3", "faq_1", "faq_2", "faq_3"]
     }
   ]
 }

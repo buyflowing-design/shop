@@ -34,12 +34,87 @@
             "title": "Actualizaciones de por vida",
             "text": "Actualizaciones continuas para mantenerte al dia con nuevas herramientas."
           }
+        },
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "author": "Marcos R.",
+            "location": "Madrid",
+            "quote": "En menos de una semana transforme mi flujo de contenido con resultados visibles."
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "author": "Paula S.",
+            "location": "Barcelona",
+            "quote": "Los prompts y plantillas me ahorran horas y elevan la calidad de mis piezas."
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "author": "Diego M.",
+            "location": "Valencia",
+            "quote": "La estructura es clara, accionable y me dio traccion real en menos de 48h."
+          }
+        },
+        "number_1": {
+          "type": "number",
+          "settings": {
+            "metric": "12K+",
+            "label": "Fundadores"
+          }
+        },
+        "number_2": {
+          "type": "number",
+          "settings": {
+            "metric": "4.9/5",
+            "label": "Valoracion media"
+          }
+        },
+        "number_3": {
+          "type": "number",
+          "settings": {
+            "metric": "48h",
+            "label": "Primeros resultados"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Recibo actualizaciones futuras?",
+            "answer": "Si. Tu compra incluye todas las actualizaciones presentes y futuras sin coste adicional."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Necesito experiencia previa?",
+            "answer": "No. El sistema viene paso a paso para que puedas aplicarlo aunque estes empezando."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cuando recibo acceso?",
+            "answer": "El acceso se entrega al instante tras confirmar la compra."
+          }
         }
       },
       "block_order": [
         "feature_1",
         "feature_2",
-        "feature_3"
+        "feature_3",
+        "review_1",
+        "review_2",
+        "review_3",
+        "number_1",
+        "number_2",
+        "number_3",
+        "faq_1",
+        "faq_2",
+        "faq_3"
       ],
       "settings": {
         "kicker": "Toolkit Digital · IA + Contenido",
@@ -53,6 +128,17 @@
         "extras_kicker": "Lo que obtienes",
         "extras_title": "Todo lo que incluye el toolkit",
         "extras_text": "Un arsenal completo para ejecutar resultados reales con inteligencia hibrida.",
+        "ticker_text": "⚡ +12.000 fundadores ya estan escalando · 🔥 247 copias vendidas este mes · ⭐ Valoracion media 4.9/5",
+        "reviews_kicker": "RESEÑAS VERIFICADAS",
+        "reviews_title": "Lo que dicen nuestros clientes",
+        "reviews_text": "Valoracion media 4.9 basada en cientos de opiniones verificadas.",
+        "numbers_kicker": "IMPACTO",
+        "numbers_title": "Numeros que hablan solos",
+        "faq_kicker": "FAQ",
+        "faq_title": "Preguntas Frecuentes",
+        "final_title": "Empieza a Crear con IA Hoy",
+        "final_text": "Accede ahora al toolkit y ejecuta un sistema probado para producir, publicar y convertir.",
+        "final_cta": "Obtener Acceso Ahora",
         "padding-block-start": 24,
         "padding-block-end": 24
       }
