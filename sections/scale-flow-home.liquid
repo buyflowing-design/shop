@@ -51,8 +51,37 @@
     <div class="sf-home__streams-grid">
       {% for block in section.blocks %}
         {% if block.type == 'stream_item' %}
+          {% assign stream_title_key = block.settings.title | downcase %}
           <article class="sf-home__stream-card sf-home__panel" {{ block.shopify_attributes }}>
-            <div class="sf-home__icon">{{ block.settings.icon }}</div>
+            <div class="sf-home__icon sf-home__icon--stream" aria-hidden="true">
+              {% if stream_title_key contains 'creative' %}
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M5 19L19 5" />
+                  <path d="M7.5 7.5L9.2 9.2" />
+                  <path d="M14.8 14.8L16.5 16.5" />
+                  <path d="M4.5 12H2.8" />
+                  <path d="M12 4.5V2.8" />
+                  <path d="M6.7 17.3L5.5 18.5" />
+                  <path d="M17.3 6.7L18.5 5.5" />
+                </svg>
+              {% elsif stream_title_key contains 'sales' %}
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 16L10 10L13.5 13.5L20 7" />
+                  <path d="M16.6 7H20V10.4" />
+                  <path d="M5 20H19" />
+                </svg>
+              {% elsif stream_title_key contains 'biz' %}
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="4" y="4" width="6" height="6" rx="1.5" />
+                  <rect x="14" y="4" width="6" height="6" rx="1.5" />
+                  <rect x="9" y="14" width="6" height="6" rx="1.5" />
+                  <path d="M7 10V12.2C7 13.2 7.8 14 8.8 14H12" />
+                  <path d="M17 10V12.2C17 13.2 16.2 14 15.2 14H12" />
+                </svg>
+              {% else %}
+                {{ block.settings.icon }}
+              {% endif %}
+            </div>
             <p class="sf-home__stream-label">{{ block.settings.label }}</p>
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
@@ -315,6 +344,16 @@
     font-weight: 700;
     margin-bottom: 1.35rem;
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%), 0 0 28px rgb(0 245 255 / 28%);
+  }
+
+  .sf-home__icon--stream svg {
+    width: 28px;
+    height: 28px;
+    stroke: #6defff;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 10px rgb(0 245 255 / 30%));
   }
 
   .sf-home__item-card h3,
