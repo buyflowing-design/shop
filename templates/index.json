@@ -59,6 +59,66 @@
             "text": "Standardize operations with automation blueprints that free owner bandwidth."
           }
         },
+        "proof_1": {
+          "type": "proof_item",
+          "settings": {
+            "icon": "+",
+            "title": "Verificado por expertos",
+            "text": "Cada guia revisada por operadores activos con experiencia de escalado."
+          }
+        },
+        "proof_2": {
+          "type": "proof_item",
+          "settings": {
+            "icon": "*",
+            "title": "Listo para implementar",
+            "text": "Frameworks accionables para obtener impacto desde el primer dia."
+          }
+        },
+        "proof_3": {
+          "type": "proof_item",
+          "settings": {
+            "icon": "#",
+            "title": "Potenciado por IA",
+            "text": "Sistemas optimizados con herramientas de IA para mayor eficiencia."
+          }
+        },
+        "proof_4": {
+          "type": "proof_item",
+          "settings": {
+            "icon": ">",
+            "title": "Resultados reales",
+            "text": "Playbooks diseñados para rendimiento medible y crecimiento continuo."
+          }
+        },
+        "stat_1": {
+          "type": "stat_item",
+          "settings": {
+            "metric": "500+",
+            "label": "Productos"
+          }
+        },
+        "stat_2": {
+          "type": "stat_item",
+          "settings": {
+            "metric": "12K+",
+            "label": "Fundadores"
+          }
+        },
+        "stat_3": {
+          "type": "stat_item",
+          "settings": {
+            "metric": "97%",
+            "label": "Satisfaccion"
+          }
+        },
+        "stat_4": {
+          "type": "stat_item",
+          "settings": {
+            "metric": "<48h",
+            "label": "Primer resultado"
+          }
+        },
         "faq_1": {
           "type": "faq_item",
           "settings": {
@@ -88,6 +148,14 @@
         "stream_1",
         "stream_2",
         "stream_3",
+        "proof_1",
+        "proof_2",
+        "proof_3",
+        "proof_4",
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
         "faq_1",
         "faq_2",
         "faq_3"
@@ -106,6 +174,9 @@
         "featured_text": "Deploy plug-and-play digital systems that remove friction and compound performance.",
         "featured_collection": "all",
         "featured_products_limit": 3,
+        "proof_kicker": "Por que Scale Flow",
+        "proof_title": "Por que los fundadores eligen Scale Flow",
+        "proof_text": "Construido por operadores y validado en el terreno real para generar crecimiento medible.",
         "faq_kicker": "Scale Clarity",
         "faq_title": "Frequently Asked Questions",
         "padding-block-start": 24,

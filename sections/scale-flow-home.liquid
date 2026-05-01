@@ -120,6 +120,36 @@
   </div>
 
   <div class="scale-flow__section scale-flow__faq scale-flow__glass-panel">
+  <div class="scale-flow__section scale-flow__proof scale-flow__glass-panel">
+    <div class="scale-flow__section-heading">
+      <p>{{ section.settings.proof_kicker }}</p>
+      <h2>{{ section.settings.proof_title }}</h2>
+      <p class="scale-flow__section-copy">{{ section.settings.proof_text }}</p>
+    </div>
+    <div class="scale-flow__proof-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'proof_item' %}
+          <article class="scale-flow__proof-card" {{ block.shopify_attributes }}>
+            <span class="scale-flow__lab-icon">{{ block.settings.icon }}</span>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="scale-flow__stats-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'stat_item' %}
+          <article class="scale-flow__stat-card" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.metric }}</h3>
+            <p>{{ block.settings.label }}</p>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="scale-flow__section scale-flow__faq scale-flow__glass-panel">
     <div class="scale-flow__section-heading">
       <p>{{ section.settings.faq_kicker }}</p>
       <h2>{{ section.settings.faq_title }}</h2>
@@ -293,7 +323,9 @@
 
   .scale-flow__lab-grid,
   .scale-flow__streams-grid,
-  .scale-flow__product-grid {
+  .scale-flow__product-grid,
+  .scale-flow__proof-grid,
+  .scale-flow__stats-grid {
     display: grid;
     gap: 1rem;
   }
@@ -304,7 +336,9 @@
 
   .scale-flow__lab-card,
   .scale-flow__stream-card,
-  .scale-flow__product-card {
+  .scale-flow__product-card,
+  .scale-flow__proof-card,
+  .scale-flow__stat-card {
     border: 1px solid rgb(255 255 255 / 14%);
     border-radius: 18px;
     background: rgb(15 23 42 / 45%);
@@ -314,7 +348,9 @@
 
   .scale-flow__lab-card:hover,
   .scale-flow__stream-card:hover,
-  .scale-flow__product-card:hover {
+  .scale-flow__product-card:hover,
+  .scale-flow__proof-card:hover,
+  .scale-flow__stat-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 0 20px rgb(0 245 255 / 16%);
     border-color: rgb(0 245 255 / 35%);
@@ -350,6 +386,29 @@
   .scale-flow__streams-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     margin-bottom: 1.2rem;
+  }
+
+  .scale-flow__proof-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 1rem;
+  }
+
+  .scale-flow__stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .scale-flow__stat-card {
+    text-align: center;
+  }
+
+  .scale-flow__stat-card h3 {
+    margin: 0;
+    color: var(--sf-cyan);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+  }
+
+  .scale-flow__stat-card p {
+    margin: 0.35rem 0 0;
   }
 
   .scale-flow__stream-label {
@@ -512,7 +571,9 @@
   @media screen and (max-width: 990px) {
     .scale-flow__lab-grid,
     .scale-flow__streams-grid,
-    .scale-flow__product-grid {
+    .scale-flow__product-grid,
+    .scale-flow__proof-grid,
+    .scale-flow__stats-grid {
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -520,7 +581,9 @@
   @media screen and (max-width: 740px) {
     .scale-flow__lab-grid,
     .scale-flow__streams-grid,
-    .scale-flow__product-grid {
+    .scale-flow__product-grid,
+    .scale-flow__proof-grid,
+    .scale-flow__stats-grid {
       grid-template-columns: 1fr;
     }
 
@@ -698,6 +761,28 @@
     },
     {
       "type": "header",
+      "content": "Prueba social"
+    },
+    {
+      "type": "text",
+      "id": "proof_kicker",
+      "label": "Kicker prueba social",
+      "default": "Por que Scale Flow"
+    },
+    {
+      "type": "text",
+      "id": "proof_title",
+      "label": "Titulo prueba social",
+      "default": "Por que los fundadores eligen Scale Flow"
+    },
+    {
+      "type": "textarea",
+      "id": "proof_text",
+      "label": "Texto prueba social",
+      "default": "Construido por operadores y validado en el terreno real para generar crecimiento medible."
+    },
+    {
+      "type": "header",
       "content": "Espaciado"
     },
     {
@@ -773,6 +858,48 @@
       ]
     },
     {
+      "type": "proof_item",
+      "name": "Item prueba social",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icono",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titulo",
+          "default": "Verificado por expertos"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texto",
+          "default": "Guias revisadas por operadores activos con experiencia real."
+        }
+      ]
+    },
+    {
+      "type": "stat_item",
+      "name": "Metrica",
+      "settings": [
+        {
+          "type": "text",
+          "id": "metric",
+          "label": "Numero",
+          "default": "12K+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta",
+          "default": "Fundadores"
+        }
+      ]
+    },
+    {
       "type": "faq_item",
       "name": "Pregunta FAQ",
       "settings": [
@@ -843,6 +970,66 @@
             "text": "Standardize operations with automation blueprints that free owner bandwidth."
           }
         },
+        "proof_1": {
+          "type": "proof_item",
+          "settings": {
+            "icon": "+",
+            "title": "Verificado por expertos",
+            "text": "Cada guia revisada por operadores activos con experiencia de escalado."
+          }
+        },
+        "proof_2": {
+          "type": "proof_item",
+          "settings": {
+            "icon": "*",
+            "title": "Listo para implementar",
+            "text": "Frameworks accionables para obtener impacto desde el primer dia."
+          }
+        },
+        "proof_3": {
+          "type": "proof_item",
+          "settings": {
+            "icon": "#",
+            "title": "Potenciado por IA",
+            "text": "Sistemas optimizados con herramientas de IA para mayor eficiencia."
+          }
+        },
+        "proof_4": {
+          "type": "proof_item",
+          "settings": {
+            "icon": ">",
+            "title": "Resultados reales",
+            "text": "Playbooks diseñados para rendimiento medible y crecimiento continuo."
+          }
+        },
+        "stat_1": {
+          "type": "stat_item",
+          "settings": {
+            "metric": "500+",
+            "label": "Productos"
+          }
+        },
+        "stat_2": {
+          "type": "stat_item",
+          "settings": {
+            "metric": "12K+",
+            "label": "Fundadores"
+          }
+        },
+        "stat_3": {
+          "type": "stat_item",
+          "settings": {
+            "metric": "97%",
+            "label": "Satisfaccion"
+          }
+        },
+        "stat_4": {
+          "type": "stat_item",
+          "settings": {
+            "metric": "<48h",
+            "label": "Primer resultado"
+          }
+        },
         "faq_1": {
           "type": "faq_item",
           "settings": {
@@ -872,6 +1059,14 @@
         "stream_1",
         "stream_2",
         "stream_3",
+        "proof_1",
+        "proof_2",
+        "proof_3",
+        "proof_4",
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
         "faq_1",
         "faq_2",
         "faq_3"
