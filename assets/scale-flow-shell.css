@@ -242,6 +242,14 @@
   color: #ffffff;
 }
 
+.sf-shell-ready .content-for-layout[data-template*='cart'] :is(.cart-primary-typography, .cart-secondary-typography) {
+  color: #ffffff !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] :is(.cart-note, .tax-info, .cart-empty-state, .cart-item__variant) {
+  color: #b9c9dd !important;
+}
+
 .sf-shell-ready .content-for-layout[data-template*='cart'] [class*='price'],
 .sf-shell-ready .content-for-layout[data-template*='cart'] .cart__totals-value {
   color: #00f5ff !important;
@@ -258,16 +266,44 @@
 }
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector {
-  border: 1px solid rgb(0 245 255 / 48%) !important;
-  background: linear-gradient(90deg, rgb(0 245 255 / 18%), rgb(99 102 241 / 22%)) !important;
+  border: 1px solid rgb(0 245 255 / 45%) !important;
+  background: rgb(8 16 34 / 88%) !important;
   color: #eaffff !important;
+  min-width: 126px;
 }
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector :is(.quantity-minus, .quantity-plus) {
   color: #00f5ff !important;
+  background: rgb(0 245 255 / 12%) !important;
+  border-radius: 8px;
 }
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector input[type='number'] {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector .quantity-plus {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector .quantity-minus {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/* Recommended products in cart */
+.sf-shell-ready .content-for-layout[data-template*='cart'] .quick-add__button,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .add-to-cart-button {
+  background: linear-gradient(90deg, #00f5ff, #6366f1) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 16px rgb(0 245 255 / 28%);
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .quick-add__button :is(.add-to-cart-text, .add-to-cart-text__content, span),
+.sf-shell-ready .content-for-layout[data-template*='cart'] .add-to-cart-button :is(.add-to-cart-text, .add-to-cart-text__content, span) {
   color: #ffffff !important;
 }
 
