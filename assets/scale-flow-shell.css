@@ -256,6 +256,14 @@
 .sf-shell-ready .content-for-layout[data-template*='cart'] .cart__totals-value {
   color: #00f5ff !important;
   text-shadow: 0 0 10px rgb(0 245 255 / 30%);
+  font-size: clamp(1.18rem, 2vw, 1.42rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.01em;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .section--page-width .cart-page:has(.cart-summary--extend) {
+  grid-column: 2 !important;
+  grid-template-columns: 1fr min(50vw, var(--sidebar-width)) !important;
 }
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .cart-page__items,
