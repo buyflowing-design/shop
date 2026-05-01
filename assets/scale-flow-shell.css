@@ -200,7 +200,9 @@
 }
 
 .sf-shell-ready .cart-drawer .quantity-selector :is(.quantity-minus, .quantity-plus) {
-  color: #00f5ff !important;
+  color: #ffffff !important;
+  background: transparent !important;
+  text-shadow: none !important;
 }
 
 .sf-shell-ready .cart-drawer .quantity-selector input[type='number'] {
@@ -265,6 +267,10 @@
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%);
 }
 
+.sf-shell-ready .content-for-layout[data-template*='cart'] .cart-page__more-blocks {
+  display: none !important;
+}
+
 .sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector {
   border: 1px solid rgb(0 245 255 / 45%) !important;
   background: rgb(8 16 34 / 88%) !important;
@@ -273,8 +279,9 @@
 }
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector :is(.quantity-minus, .quantity-plus) {
-  color: #00f5ff !important;
-  background: rgb(0 245 255 / 12%) !important;
+  color: #ffffff !important;
+  background: transparent !important;
+  text-shadow: none !important;
   border-radius: 8px;
 }
 
@@ -305,6 +312,15 @@
 .sf-shell-ready .content-for-layout[data-template*='cart'] .quick-add__button :is(.add-to-cart-text, .add-to-cart-text__content, span),
 .sf-shell-ready .content-for-layout[data-template*='cart'] .add-to-cart-button :is(.add-to-cart-text, .add-to-cart-text__content, span) {
   color: #ffffff !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .cart-discount__input {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .cart-discount__input::placeholder {
+  color: rgb(235 245 255 / 74%) !important;
 }
 
 /* Keep cart drawer above header without blocking interactions */
@@ -368,12 +384,60 @@
   color: #ffffff !important;
   border: 0 !important;
   box-shadow: 0 0 16px rgb(0 245 255 / 30%);
+  width: 44px !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  border-radius: 999px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: width 0.2s ease, padding 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .sf-shell-ready .product-recommendations .quick-add__button :is(.add-to-cart-text, .add-to-cart-text__content, span),
 .sf-shell-ready .product-recommendations .add-to-cart-button :is(.add-to-cart-text, .add-to-cart-text__content, span) {
-  color: #ffffff !important;
-  opacity: 1 !important;
+  color: transparent !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  max-width: 0 !important;
+  overflow: hidden !important;
+}
+
+.sf-shell-ready .product-recommendations .quick-add__button .add-to-cart-icon,
+.sf-shell-ready .product-recommendations .add-to-cart-button .add-to-cart-icon,
+.sf-shell-ready .product-recommendations .quick-add__button .add-to-cart-text__content,
+.sf-shell-ready .product-recommendations .add-to-cart-button .add-to-cart-text__content {
+  display: none !important;
+}
+
+.sf-shell-ready .product-recommendations .quick-add__button::before,
+.sf-shell-ready .product-recommendations .add-to-cart-button::before {
+  content: "+";
+  color: #ffffff;
+  font: 800 1.35rem / 1 Outfit, Inter, sans-serif;
+}
+
+.sf-shell-ready .product-recommendations .quick-add__button:hover,
+.sf-shell-ready .product-recommendations .quick-add__button:focus-visible,
+.sf-shell-ready .product-recommendations .add-to-cart-button:hover,
+.sf-shell-ready .product-recommendations .add-to-cart-button:focus-visible {
+  width: 112px !important;
+  min-width: 112px !important;
+  padding: 0 0.95rem !important;
+  box-shadow: 0 0 20px rgb(0 245 255 / 40%) !important;
+}
+
+.sf-shell-ready .product-recommendations .quick-add__button:hover::before,
+.sf-shell-ready .product-recommendations .quick-add__button:focus-visible::before,
+.sf-shell-ready .product-recommendations .add-to-cart-button:hover::before,
+.sf-shell-ready .product-recommendations .add-to-cart-button:focus-visible::before {
+  content: "Añadir";
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
 }
 
 .sf-shell-ready .product-recommendations .quick-add__button :is(svg, path),
