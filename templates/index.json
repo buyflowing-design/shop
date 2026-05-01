@@ -14,151 +14,105 @@
         "lab_1": {
           "type": "lab_item",
           "settings": {
-            "icon": "+",
-            "title": "Human Strategy",
-            "text": "Market-tested operator logic guides every framework and recommendation."
+            "icon": "◉",
+            "title": "Experiencia Humana",
+            "text": "Curado por operadores reales que han construido y escalado negocios de verdad."
           }
         },
         "lab_2": {
           "type": "lab_item",
           "settings": {
-            "icon": "*",
-            "title": "AI Execution",
-            "text": "Automated prompts and workflows remove bottlenecks and compress execution time."
+            "icon": "⚡",
+            "title": "Eficiencia con IA",
+            "text": "Cada framework optimizado y testado con IA para el maximo rendimiento."
           }
         },
         "lab_3": {
           "type": "lab_item",
           "settings": {
-            "icon": "#",
-            "title": "Compounding Growth",
-            "text": "Systems stack together so each implementation increases your operational leverage."
+            "icon": "↻",
+            "title": "Flujo Accionable",
+            "text": "Blueprints paso a paso que puedes implementar de inmediato."
           }
         },
         "stream_1": {
           "type": "stream_item",
           "settings": {
-            "label": "Stream",
+            "icon": "✦",
+            "label": "MARCA Y CONTENIDO",
             "title": "CreativeScale",
-            "text": "Build high-performing content engines powered by strategic AI ideation."
+            "text": "Atrae y convierte con sistemas de contenido irresistibles y playbooks de marca."
           }
         },
         "stream_2": {
           "type": "stream_item",
           "settings": {
-            "label": "Stream",
+            "icon": "↗",
+            "label": "INGRESOS Y FUNNELS",
             "title": "SalesScale",
-            "text": "Deploy conversion scripts and offers that increase average order value."
+            "text": "Construye funnels de alta conversion y secuencias de ventas que funcionan en piloto automatico."
           }
         },
         "stream_3": {
           "type": "stream_item",
           "settings": {
-            "label": "Stream",
+            "icon": "⌘",
+            "label": "OPERACIONES E IA",
             "title": "BizScale",
-            "text": "Standardize operations with automation blueprints that free owner bandwidth."
+            "text": "Automatiza tus operaciones y gana apalancamiento con SOPs y blueprints potenciados por IA."
           }
         },
         "proof_1": {
           "type": "proof_item",
           "settings": {
-            "icon": "+",
-            "title": "Verificado por expertos",
-            "text": "Cada guia revisada por operadores activos con experiencia de escalado."
+            "icon": "✓",
+            "title": "Verificado por Expertos",
+            "text": "Cada guia revisada por operadores activos con negocios de 7 cifras."
           }
         },
         "proof_2": {
           "type": "proof_item",
           "settings": {
-            "icon": "*",
-            "title": "Listo para implementar",
-            "text": "Frameworks accionables para obtener impacto desde el primer dia."
+            "icon": "🚀",
+            "title": "Listo para Implementar",
+            "text": "Sin teoria - frameworks listos para ejecutar desde el primer dia."
           }
         },
         "proof_3": {
           "type": "proof_item",
           "settings": {
-            "icon": "#",
+            "icon": "🤖",
             "title": "Potenciado por IA",
-            "text": "Sistemas optimizados con herramientas de IA para mayor eficiencia."
+            "text": "Sistemas testeados y optimizados con las ultimas herramientas de IA."
           }
         },
         "proof_4": {
           "type": "proof_item",
           "settings": {
-            "icon": ">",
-            "title": "Resultados reales",
-            "text": "Playbooks diseñados para rendimiento medible y crecimiento continuo."
-          }
-        },
-        "stat_1": {
-          "type": "stat_item",
-          "settings": {
-            "metric": "500+",
-            "label": "Productos"
-          }
-        },
-        "stat_2": {
-          "type": "stat_item",
-          "settings": {
-            "metric": "12K+",
-            "label": "Fundadores"
-          }
-        },
-        "stat_3": {
-          "type": "stat_item",
-          "settings": {
-            "metric": "97%",
-            "label": "Satisfaccion"
-          }
-        },
-        "stat_4": {
-          "type": "stat_item",
-          "settings": {
-            "metric": "<48h",
-            "label": "Primer resultado"
+            "icon": "🔒",
+            "title": "Resultados Garantizados",
+            "text": "Si no ves resultados, lo solucionamos."
           }
         },
         "faq_1": {
           "type": "faq_item",
           "settings": {
-            "question": "Are the guides beginner-friendly?",
-            "answer": "Yes. Each asset includes tactical steps, examples, and implementation checkpoints."
+            "question": "¿Que hay exactamente dentro de un producto de Scale Flow?",
+            "answer": "Guias, prompts, SOPs y plantillas listas para aplicar."
           }
         },
         "faq_2": {
           "type": "faq_item",
           "settings": {
-            "question": "Can I use the systems with my current stack?",
-            "answer": "The playbooks are tool-agnostic and include options for common ecommerce and marketing platforms."
+            "question": "¿Es para principiantes o emprendedores avanzados?",
+            "answer": "Funciona para ambos niveles gracias a su estructura modular."
           }
         },
         "faq_3": {
           "type": "faq_item",
           "settings": {
-            "question": "How often are products updated?",
-            "answer": "Core products are updated regularly as AI and market best practices evolve."
-          }
-        },
-        "log_1": {
-          "type": "log_step",
-          "settings": {
-            "title": "Step 1: Expert Extraction",
-            "text": "Extraemos la estrategia de un profesional top."
-          }
-        },
-        "log_2": {
-          "type": "log_step",
-          "settings": {
-            "title": "Step 2: AI Optimization",
-            "text": "Nuestros ingenieros convierten esa estrategia en prompts de alto rendimiento."
-          }
-        },
-        "log_3": {
-          "type": "log_step",
-          "settings": {
-            "title": "Step 3: Flow Delivery",
-            "text": "Te entregamos el sistema listo para usar."
+            "question": "¿Tengo acceso de por vida?",
+            "answer": "Si. Incluye acceso de por vida y actualizaciones futuras."
           }
         }
       },
@@ -173,22 +127,15 @@
         "proof_2",
         "proof_3",
         "proof_4",
-        "stat_1",
-        "stat_2",
-        "stat_3",
-        "stat_4",
         "faq_1",
         "faq_2",
-        "faq_3",
-        "log_1",
-        "log_2",
-        "log_3"
+        "faq_3"
       ],
       "settings": {
-        "hero_badge": "Toolkits de Crecimiento con IA",
+        "hero_badge": "TOOLKITS DE CRECIMIENTO CON IA",
         "hero_title": "Escala Mas Inteligente.",
         "hero_title_alt": "Fluye Mas Lejos.",
-        "hero_text": "Accede a guias verificadas, toolkits y blueprints de automatizacion para escalar tu negocio con Inteligencia Hibrida.",
+        "hero_text": "Guias verificadas por expertos, toolkits y estrategias potenciadas por IA para hacer crecer tu negocio mas rapido.",
         "hero_cta_label": "Explorar la Biblioteca",
         "hero_cta_link": "shopify://collections/all",
         "hero_secondary_cta_label": "Ver Como Funciona",
@@ -196,34 +143,28 @@
         "trust_1": "Verificado por expertos",
         "trust_2": "Descarga instantanea",
         "trust_3": "Mas de 10,000 fundadores",
-        "lab_kicker": "El Laboratorio",
+        "lab_kicker": "EL LABORATORIO",
         "lab_title": "Impulsado por Inteligencia Hibrida",
-        "lab_text": "Combinamos el juicio irremplazable de expertos humanos con la velocidad de la IA para generar estrategias que realmente funcionan.",
-        "featured_kicker": "Streams",
-        "featured_title": "Elige Tu Stream",
-        "featured_text": "Cada toolkit esta construido para un unico objetivo: crecimiento medible.",
+        "lab_text": "Combinamos el juicio irremplazable de expertos humanos con la velocidad inigualable de la IA para que obtengas estrategias que realmente funcionan.",
+        "streams_kicker": "STREAMS",
+        "streams_title": "Elige Tu Stream",
+        "streams_text": "Cada toolkit esta construido para un unico objetivo: crecimiento medible.",
         "stream_cta_label": "Explorar Stream",
         "featured_collection": "all",
-        "featured_products_limit": 3,
-        "proof_kicker": "Por que Scale Flow",
-        "proof_title": "Por que los fundadores eligen Scale Flow",
-        "proof_text": "Construido por operadores, validado en las trincheras y respaldado por miles de fundadores.",
-        "faq_kicker": "Preguntas Frecuentes",
+        "proof_kicker": "POR QUE SCALE FLOW",
+        "proof_title": "Por Que los Fundadores Eligen Scale Flow",
+        "proof_text": "Construido por operadores, validado en las trincheras y respaldado por miles de fundadores escalando negocios reales.",
+        "faq_kicker": "PREGUNTAS FRECUENTES",
         "faq_title": "Todo Lo Que Necesitas Saber",
         "faq_text": "Sin rodeos - solo respuestas.",
-        "faq_contact_text": "¿Aun tienes preguntas?",
-        "faq_contact_label": "Contactanos ->",
-        "faq_contact_link": "shopify://pages/contact",
-        "closing_kicker": "Tu Proximo Paso",
+        "closing_kicker": "TU PROXIMO PASO",
         "closing_title": "¿Listo para Escalar Mas Inteligente?",
-        "closing_text": "Activa tus sistemas y transforma tu crecimiento con playbooks accionables desde hoy.",
+        "closing_text": "Unete a mas de 12.000 fundadores que ya han transformado su negocio con los sistemas de Scale Flow.",
         "closing_cta_label": "Empieza a Escalar Ahora",
         "closing_cta_link": "shopify://collections/all",
-        "log_title": "The Flow Lab Log",
-        "newsletter_title": "Unete a nuestra lista de correo",
-        "newsletter_text": "Consigue ofertas exclusivas y acceso anticipado a nuevos productos.",
-        "newsletter_placeholder": "Tu email",
-        "newsletter_button": "Suscribirme",
+        "close_trust_1": "Acceso Inmediato",
+        "close_trust_2": "Sin Suscripciones",
+        "close_trust_3": "Actualizaciones de Por Vida",
         "padding-block-start": 24,
         "padding-block-end": 24
       }
