@@ -214,6 +214,16 @@
   backdrop-filter: none !important;
 }
 
+.sf-shell-ready .content-for-layout[data-template*='collection'] .section::before,
+.sf-shell-ready .content-for-layout[data-template*='collection'] .section::after,
+.sf-shell-ready .content-for-layout[data-template*='collection'] .shopify-section::before,
+.sf-shell-ready .content-for-layout[data-template*='collection'] .shopify-section::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
 .sf-shell-ready .content-for-layout[data-template*='collection'] .section-background {
   opacity: 0 !important;
   display: none !important;
