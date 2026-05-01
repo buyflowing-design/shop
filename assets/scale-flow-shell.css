@@ -477,6 +477,8 @@
 
 .sf-shell-ready .content-for-layout[data-template*='cart'] :is(.ui-test-product-list, [data-testid='product-list']) .quick-add__button .add-to-cart-icon,
 .sf-shell-ready .content-for-layout[data-template*='cart'] :is(.ui-test-product-list, [data-testid='product-list']) .add-to-cart-button .add-to-cart-icon,
+.sf-shell-ready .content-for-layout[data-template*='cart'] :is(.ui-test-product-list, [data-testid='product-list']) .quick-add__button .add-to-cart-text,
+.sf-shell-ready .content-for-layout[data-template*='cart'] :is(.ui-test-product-list, [data-testid='product-list']) .add-to-cart-button .add-to-cart-text,
 .sf-shell-ready .content-for-layout[data-template*='cart'] :is(.ui-test-product-list, [data-testid='product-list']) .quick-add__button .add-to-cart-text__content,
 .sf-shell-ready .content-for-layout[data-template*='cart'] :is(.ui-test-product-list, [data-testid='product-list']) .add-to-cart-button .add-to-cart-text__content {
   display: none !important;
