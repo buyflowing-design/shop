@@ -162,6 +162,49 @@
   color: #dff9ff !important;
 }
 
+/* Contact page */
+.sf-shell-ready .content-for-layout[data-template*='contact'],
+.sf-shell-ready .content-for-layout[data-template*='page.contact'] {
+  background: #050505 !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='contact'] .section-background,
+.sf-shell-ready .content-for-layout[data-template*='contact'] .section {
+  background: transparent !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='contact'] .sfc,
+.sf-shell-ready .content-for-layout[data-template*='contact'] .sf-contact-fallback {
+  background: #050505 !important;
+  color: #ffffff !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='contact'] :is(h1, h2, h3, h4, p, a, span, label, legend) {
+  color: #ffffff !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='contact'] .sfc__subtitle,
+.sf-shell-ready .content-for-layout[data-template*='contact'] .sf-contact-fallback .sfc__subtitle {
+  color: #94a3b8 !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='contact'] :is(input, textarea, select) {
+  border: 1px solid rgb(255 255 255 / 16%) !important;
+  background: rgb(8 15 30 / 72%) !important;
+  color: #f0f7ff !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='contact'] :is(input, textarea)::placeholder {
+  color: #9db0c8 !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='contact'] :is(button, .button, [type='submit']) {
+  background: linear-gradient(90deg, #00f5ff, #6366f1) !important;
+  color: #031018 !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 20px rgb(0 245 255 / 24%);
+}
+
 /* Neon icon language */
 .sf-shell-ready :is(#header-group, footer, .cart-page) .svg-wrapper svg,
 .sf-shell-ready :is(#header-group, footer, .cart-page) .icon svg,
