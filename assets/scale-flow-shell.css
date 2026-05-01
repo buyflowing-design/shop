@@ -417,6 +417,11 @@
 .sf-shell-ready .product-recommendations .quick-add__button::before,
 .sf-shell-ready .product-recommendations .add-to-cart-button::before {
   content: "+";
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #ffffff;
   font: 800 1.35rem / 1 Outfit, Inter, sans-serif;
 }
@@ -454,6 +459,7 @@
   border-radius: 999px !important;
   padding: 0 !important;
   overflow: hidden !important;
+  position: relative !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -479,6 +485,11 @@
 .sf-shell-ready .content-for-layout[data-template*='cart'] :is(.ui-test-product-list, [data-testid='product-list']) .quick-add__button::before,
 .sf-shell-ready .content-for-layout[data-template*='cart'] :is(.ui-test-product-list, [data-testid='product-list']) .add-to-cart-button::before {
   content: "+";
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #ffffff;
   font: 800 1.35rem / 1 Outfit, Inter, sans-serif;
 }
