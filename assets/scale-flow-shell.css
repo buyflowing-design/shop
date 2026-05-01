@@ -40,7 +40,7 @@
 .sf-shell-ready .header-section:focus-within,
 .sf-shell-ready .shopify-section-group-header-group .section-background,
 .sf-shell-ready .shopify-section-group-header-group .section-background:hover {
-  background: linear-gradient(180deg, rgb(5 5 5 / 88%), rgb(5 5 5 / 62%)) !important;
+  background: #050505 !important;
 }
 
 .sf-shell-ready #header-group::before,
@@ -81,8 +81,8 @@
 .sf-shell-ready .header .menu__item:focus-visible,
 .sf-shell-ready .header .header__heading-link:focus-visible,
 .sf-shell-ready .header .header-actions__action:focus-visible {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #050505 !important;
+  background-color: #050505 !important;
   box-shadow: none !important;
 }
 
