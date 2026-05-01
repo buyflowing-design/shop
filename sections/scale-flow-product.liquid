@@ -70,10 +70,16 @@
 
   <div class="sfp__ticker sfp__glass">
     <div class="sfp__ticker-track">
-      <span>{{ section.settings.ticker_text }}</span>
-      <span aria-hidden="true">{{ section.settings.ticker_text }}</span>
-      <span aria-hidden="true">{{ section.settings.ticker_text }}</span>
-      <span aria-hidden="true">{{ section.settings.ticker_text }}</span>
+      <div class="sfp__ticker-group">
+        <span>{{ section.settings.ticker_text }}</span>
+        <span aria-hidden="true">{{ section.settings.ticker_text }}</span>
+        <span aria-hidden="true">{{ section.settings.ticker_text }}</span>
+      </div>
+      <div class="sfp__ticker-group" aria-hidden="true">
+        <span>{{ section.settings.ticker_text }}</span>
+        <span aria-hidden="true">{{ section.settings.ticker_text }}</span>
+        <span aria-hidden="true">{{ section.settings.ticker_text }}</span>
+      </div>
     </div>
   </div>
 
@@ -136,20 +142,6 @@
         {% for block in section.blocks %}
           {% if block.type == 'tool' %}
             <span class="sfp__tool-pill" {{ block.shopify_attributes }}>{{ block.settings.name }}</span>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="sfp__tools-row" aria-hidden="true">
-        {% for block in section.blocks %}
-          {% if block.type == 'tool' %}
-            <span class="sfp__tool-pill">{{ block.settings.name }}</span>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="sfp__tools-row" aria-hidden="true">
-        {% for block in section.blocks %}
-          {% if block.type == 'tool' %}
-            <span class="sfp__tool-pill">{{ block.settings.name }}</span>
           {% endif %}
         {% endfor %}
       </div>
@@ -397,9 +389,16 @@
   .sfp__ticker-track {
     display: flex;
     width: max-content;
-    gap: 3rem;
+    gap: 0;
     white-space: nowrap;
     animation: sfpTicker 22s linear infinite;
+  }
+
+  .sfp__ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding-right: 3rem;
   }
 
   .sfp__ticker-track span {
@@ -582,25 +581,40 @@
   .sfp__tools-marquee {
     display: flex;
     width: max-content;
-    gap: 1.35rem;
+    gap: 0;
     animation: sfpToolsTicker 26s linear infinite;
   }
 
   .sfp__tools-row {
     display: flex;
     justify-content: center;
-    gap: 0.55rem;
+    gap: 0.7rem;
     flex-wrap: nowrap;
     white-space: nowrap;
+    padding-right: 0.7rem;
   }
 
   .sfp__tool-pill {
     border: 1px solid rgb(0 245 255 / 33%);
     border-radius: 999px;
-    padding: 0.28rem 0.72rem;
+    padding: 0.32rem 0.8rem;
     color: #dfebff;
-    font-size: 0.74rem;
+    font-size: 0.77rem;
+    font-weight: 700;
     background: rgb(9 18 38 / 86%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 11%), 0 0 16px rgb(0 245 255 / 18%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .sfp__tool-pill::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #7ffbff, #00f5ff);
+    box-shadow: 0 0 12px rgb(0 245 255 / 85%);
   }
 
   .sfp__faq-list {
@@ -718,7 +732,7 @@
       transform: translateX(0);
     }
     to {
-      transform: translateX(-25%);
+      transform: translateX(-50%);
     }
   }
 
@@ -727,7 +741,7 @@
       transform: translateX(0);
     }
     to {
-      transform: translateX(-25%);
+      transform: translateX(-50%);
     }
   }
 
