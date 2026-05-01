@@ -528,6 +528,8 @@
     cursor: pointer;
     font: 700 clamp(1.06rem, 2.2vw, 1.4rem) / 1.3 Outfit, Inter, sans-serif;
     list-style: none;
+    color: #eaf4ff;
+    transition: color 0.18s ease;
   }
 
   .sf-home__faq-item summary::-webkit-details-marker {
@@ -537,6 +539,21 @@
   .sf-home__faq-item p {
     margin: 0.8rem 0 0;
     color: #a8b8cd;
+    transition: color 0.18s ease;
+  }
+
+  .sf-home__faq-item:hover {
+    border-color: rgb(0 245 255 / 52%);
+    background: linear-gradient(150deg, rgb(0 245 255 / 14%), rgb(99 102 241 / 18%));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 16%), 0 0 18px rgb(0 245 255 / 24%);
+  }
+
+  .sf-home__faq-item:hover summary {
+    color: #86f7ff;
+  }
+
+  .sf-home__faq-item:hover p {
+    color: #d5ebff;
   }
 
   .sf-home__closing {
