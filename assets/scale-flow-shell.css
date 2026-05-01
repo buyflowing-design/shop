@@ -172,11 +172,30 @@
 .sf-shell-ready .content-for-layout:has([id*='shopify-section-template--'][class*='main-collection']),
 .sf-shell-ready .content-for-layout[data-template*='collection'] {
   background: #050505 !important;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.sf-shell-ready .content-for-layout:has([id*='shopify-section-template--'][class*='main-collection'])::before,
+.sf-shell-ready .content-for-layout[data-template*='collection']::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(1100px 620px at 8% 32%, rgb(0 245 255 / 20%), transparent 62%),
+    radial-gradient(1100px 720px at 92% 78%, rgb(99 102 241 / 24%), transparent 66%);
 }
 
 .sf-shell-ready .content-for-layout[data-template*='collection'] .section-background,
 .sf-shell-ready .content-for-layout[data-template*='collection'] .section {
   background: transparent !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='collection'] .shopify-section {
+  position: relative;
+  z-index: 1;
 }
 
 .sf-shell-ready .content-for-layout[data-template*='collection'] :is(h1, h2, h3, p, a, span, label) {
