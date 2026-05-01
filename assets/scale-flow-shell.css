@@ -176,6 +176,18 @@
   color: #ffffff !important;
 }
 
+.sf-shell-ready .cart-drawer,
+.sf-shell-ready .cart-drawer__dialog.dialog-modal,
+.sf-shell-ready .cart-drawer__dialog.dialog-drawer,
+.sf-shell-ready .cart-drawer__dialog:modal {
+  background: #050505 !important;
+  background-color: #050505 !important;
+}
+
+.sf-shell-ready .cart-drawer__dialog::backdrop {
+  background: rgb(0 0 0 / 72%) !important;
+}
+
 .sf-shell-ready .cart-drawer .quantity-selector {
   border: 1px solid rgb(0 245 255 / 48%) !important;
   background: linear-gradient(90deg, rgb(0 245 255 / 18%), rgb(99 102 241 / 22%)) !important;
