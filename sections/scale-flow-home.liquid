@@ -63,19 +63,37 @@
     </div>
   </div>
 
-  <div class="sf-home__section">
+  <div class="sf-home__section sf-home__section--proof">
     <h2>{{ section.settings.proof_title }}</h2>
     <p class="sf-home__section-subtitle">{{ section.settings.proof_text }}</p>
     <div class="sf-home__proof-grid">
       {% for block in section.blocks %}
         {% if block.type == 'proof_item' %}
-          <article class="sf-home__item-card sf-home__panel" {{ block.shopify_attributes }}>
+          <article class="sf-home__item-card sf-home__panel sf-home__proof-card" {{ block.shopify_attributes }}>
             <div class="sf-home__icon">{{ block.settings.icon }}</div>
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
           </article>
         {% endif %}
       {% endfor %}
+    </div>
+    <div class="sf-home__proof-stats">
+      <article class="sf-home__proof-stat">
+        <h3>{{ section.settings.proof_stat_1_value }}</h3>
+        <p>{{ section.settings.proof_stat_1_label }}</p>
+      </article>
+      <article class="sf-home__proof-stat">
+        <h3>{{ section.settings.proof_stat_2_value }}</h3>
+        <p>{{ section.settings.proof_stat_2_label }}</p>
+      </article>
+      <article class="sf-home__proof-stat">
+        <h3>{{ section.settings.proof_stat_3_value }}</h3>
+        <p>{{ section.settings.proof_stat_3_label }}</p>
+      </article>
+      <article class="sf-home__proof-stat">
+        <h3>{{ section.settings.proof_stat_4_value }}</h3>
+        <p>{{ section.settings.proof_stat_4_label }}</p>
+      </article>
     </div>
   </div>
 
@@ -339,6 +357,82 @@
 
   .sf-home__proof-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.45rem;
+  }
+
+  .sf-home__section--proof {
+    align-items: center;
+  }
+
+  .sf-home__section--proof h2 {
+    max-width: 860px;
+    font: 800 clamp(2.7rem, 6.8vw, 5rem) / 1.06 Outfit, Inter, sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  .sf-home__section--proof .sf-home__section-subtitle {
+    margin-top: 1.45rem;
+    max-width: 900px;
+    color: #96a9c4;
+    font-size: clamp(1.08rem, 2vw, 1.72rem);
+    line-height: 1.56;
+  }
+
+  .sf-home__proof-card {
+    min-height: 330px;
+    padding: 1.75rem 1.5rem 1.55rem;
+    border-radius: 24px;
+    border: 1px solid rgb(255 255 255 / 13%);
+    background: linear-gradient(160deg, rgb(17 28 49 / 80%), rgb(14 25 45 / 64%));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 12%);
+  }
+
+  .sf-home__proof-card .sf-home__icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    margin-bottom: 1.25rem;
+  }
+
+  .sf-home__proof-card h3 {
+    font: 700 clamp(1.28rem, 2.1vw, 1.9rem) / 1.25 Outfit, Inter, sans-serif;
+  }
+
+  .sf-home__proof-card p {
+    margin-top: 0.85rem;
+    color: #9aacc4;
+    font-size: clamp(1rem, 1.35vw, 1.15rem);
+    line-height: 1.52;
+  }
+
+  .sf-home__proof-stats {
+    margin-top: 1.9rem;
+    padding-top: 1.9rem;
+    width: 100%;
+    border-top: 1px solid rgb(0 245 255 / 22%);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .sf-home__proof-stat {
+    text-align: center;
+  }
+
+  .sf-home__proof-stat h3 {
+    margin: 0;
+    font: 800 clamp(2.35rem, 4.2vw, 4rem) / 1 Outfit, Inter, sans-serif;
+    color: #86f7ff;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 20px rgb(0 245 255 / 24%);
+  }
+
+  .sf-home__proof-stat p {
+    margin: 0.48rem 0 0;
+    font-size: 0.96rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #a7b9d1;
   }
 
   .sf-home__stream-card {
@@ -454,6 +548,11 @@
     .sf-home__proof-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .sf-home__proof-stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 1.45rem;
+    }
   }
 
   @media screen and (max-width: 760px) {
@@ -473,6 +572,15 @@
     .sf-home__streams-grid,
     .sf-home__proof-grid {
       grid-template-columns: 1fr;
+    }
+
+    .sf-home__proof-card {
+      min-height: auto;
+    }
+
+    .sf-home__proof-stats {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
     .sf-home__item-card {
@@ -514,6 +622,14 @@
     { "type": "text", "id": "proof_kicker", "label": "Kicker proof", "default": "POR QUE SCALE FLOW" },
     { "type": "text", "id": "proof_title", "label": "Titulo proof", "default": "Por Que los Fundadores Eligen Scale Flow" },
     { "type": "textarea", "id": "proof_text", "label": "Texto proof", "default": "Construido por operadores, validado en las trincheras y respaldado por miles de fundadores escalando negocios reales." },
+    { "type": "text", "id": "proof_stat_1_value", "label": "Stat 1 valor", "default": "500+" },
+    { "type": "text", "id": "proof_stat_1_label", "label": "Stat 1 label", "default": "PRODUCTOS" },
+    { "type": "text", "id": "proof_stat_2_value", "label": "Stat 2 valor", "default": "12K+" },
+    { "type": "text", "id": "proof_stat_2_label", "label": "Stat 2 label", "default": "FUNDADORES" },
+    { "type": "text", "id": "proof_stat_3_value", "label": "Stat 3 valor", "default": "97%" },
+    { "type": "text", "id": "proof_stat_3_label", "label": "Stat 3 label", "default": "SATISFACCIÓN" },
+    { "type": "text", "id": "proof_stat_4_value", "label": "Stat 4 valor", "default": "€0" },
+    { "type": "text", "id": "proof_stat_4_label", "label": "Stat 4 label", "default": "RELLENO" },
     { "type": "text", "id": "faq_kicker", "label": "Kicker FAQ", "default": "PREGUNTAS FRECUENTES" },
     { "type": "text", "id": "faq_title", "label": "Titulo FAQ", "default": "Todo Lo Que Necesitas Saber" },
     { "type": "textarea", "id": "faq_text", "label": "Texto FAQ", "default": "Sin rodeos - solo respuestas." },
