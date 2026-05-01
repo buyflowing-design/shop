@@ -806,6 +806,10 @@
   color: #eaf4ff !important;
 }
 
+.sf-shell-ready :is(#shopify-pc__banner, .shopify-pc__banner) a {
+  text-decoration: none !important;
+}
+
 .sf-shell-ready :is(#shopify-pc__banner, #shopify-pc__prefs__modal, .shopify-pc__banner, .shopify-pc__prefs__modal) :is(button, .button) {
   background: linear-gradient(90deg, #00f5ff, #6366f1) !important;
   color: #031018 !important;
