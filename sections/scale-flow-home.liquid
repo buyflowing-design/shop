@@ -3,11 +3,7 @@
   assign featured_limit = section.settings.featured_products_limit
 %}
 
-<section
-  id="ScaleFlow-{{ section.id }}"
-  class="scale-flow spacing-style"
-  style="{% render 'spacing-style', settings: section.settings %}"
->
+<section id="ScaleFlow-{{ section.id }}" class="scale-flow spacing-style" style="{% render 'spacing-style', settings: section.settings %}">
   <div class="scale-flow__bg-texture"></div>
 
   <div class="scale-flow__hero scale-flow__glass-panel">
@@ -17,676 +13,92 @@
       <span class="scale-flow__shape scale-flow__shape--thread" data-speed="0.02"></span>
       <span class="scale-flow__shape scale-flow__shape--sphere scale-flow__shape--small" data-speed="0.03"></span>
     </div>
-
     <div class="scale-flow__hero-content">
       <p class="scale-flow__badge">{{ section.settings.hero_badge }}</p>
       <h1>{{ section.settings.hero_title }}</h1>
       <h1 class="scale-flow__hero-title-alt">{{ section.settings.hero_title_alt }}</h1>
       <p class="scale-flow__hero-copy">{{ section.settings.hero_text }}</p>
-      {% if section.settings.hero_cta_label != blank %}
-        <a class="scale-flow__cta" href="{{ section.settings.hero_cta_link | default: '#' }}">
-          {{ section.settings.hero_cta_label }}
-        </a>
-      {% endif %}
-    </div>
-    <div class="scale-flow__trust-row">
-      <span>{{ section.settings.trust_1 }}</span>
-      <span>{{ section.settings.trust_2 }}</span>
-      <span>{{ section.settings.trust_3 }}</span>
-    </div>
-  </div>
-
-  <div class="scale-flow__section scale-flow__lab scale-flow__glass-panel">
-    <div class="scale-flow__section-heading">
-      <p>{{ section.settings.lab_kicker }}</p>
-      <h2>{{ section.settings.lab_title }}</h2>
-      <p class="scale-flow__section-copy">{{ section.settings.lab_text }}</p>
-    </div>
-    <div class="scale-flow__lab-grid">
-      {% for block in section.blocks %}
-        {% if block.type == 'lab_item' %}
-          <article class="scale-flow__lab-card" {{ block.shopify_attributes }}>
-            <span class="scale-flow__lab-icon">{{ block.settings.icon }}</span>
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.text }}</p>
-          </article>
+      <div class="scale-flow__hero-ctas">
+        <a class="scale-flow__cta" href="{{ section.settings.hero_cta_link | default: '#' }}">{{ section.settings.hero_cta_label }}</a>
+        {% if section.settings.hero_secondary_cta_label != blank %}
+          <a class="scale-flow__cta scale-flow__cta--ghost" href="{{ section.settings.hero_secondary_cta_link | default: '#' }}">{{ section.settings.hero_secondary_cta_label }}</a>
         {% endif %}
-      {% endfor %}
+      </div>
     </div>
+    <div class="scale-flow__trust-row"><span>{{ section.settings.trust_1 }}</span><span>{{ section.settings.trust_2 }}</span><span>{{ section.settings.trust_3 }}</span></div>
   </div>
 
-  <div class="scale-flow__section scale-flow__streams scale-flow__glass-panel">
+  <div class="scale-flow__section scale-flow__glass-panel">
+    <div class="scale-flow__section-heading"><p>{{ section.settings.lab_kicker }}</p><h2>{{ section.settings.lab_title }}</h2><p class="scale-flow__section-copy">{{ section.settings.lab_text }}</p></div>
+    <div class="scale-flow__lab-grid">{% for block in section.blocks %}{% if block.type == 'lab_item' %}<article class="scale-flow__card" {{ block.shopify_attributes }}><span class="scale-flow__lab-icon">{{ block.settings.icon }}</span><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></article>{% endif %}{% endfor %}</div>
+  </div>
+
+  <div class="scale-flow__section scale-flow__glass-panel">
     <div class="scale-flow__floating-layer scale-flow__floating-layer--products" aria-hidden="true">
       <span class="scale-flow__shape scale-flow__shape--thread scale-flow__shape--wide" data-speed="0.012"></span>
       <span class="scale-flow__shape scale-flow__shape--cube scale-flow__shape--small" data-speed="0.02"></span>
       <span class="scale-flow__shape scale-flow__shape--sphere" data-speed="0.017"></span>
     </div>
-
-    <div class="scale-flow__section-heading">
-      <p>{{ section.settings.featured_kicker }}</p>
-      <h2>{{ section.settings.featured_title }}</h2>
-      <p class="scale-flow__section-copy">{{ section.settings.featured_text }}</p>
-    </div>
-
-    <div class="scale-flow__streams-grid">
-      {% for block in section.blocks %}
-        {% if block.type == 'stream_item' %}
-          <article class="scale-flow__stream-card" {{ block.shopify_attributes }}>
-            <p class="scale-flow__stream-label">{{ block.settings.label }}</p>
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.text }}</p>
-          </article>
-        {% endif %}
-      {% endfor %}
-    </div>
-
+    <div class="scale-flow__section-heading"><p>{{ section.settings.featured_kicker }}</p><h2>{{ section.settings.featured_title }}</h2><p class="scale-flow__section-copy">{{ section.settings.featured_text }}</p></div>
+    <div class="scale-flow__streams-grid">{% for block in section.blocks %}{% if block.type == 'stream_item' %}<article class="scale-flow__card" {{ block.shopify_attributes }}><p class="scale-flow__stream-label">{{ block.settings.label }}</p><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p><a class="scale-flow__stream-link" href="{{ block.settings.link | default: '#' }}">{{ section.settings.stream_cta_label }}</a></article>{% endif %}{% endfor %}</div>
     <div class="scale-flow__product-grid">
       {% if featured_collection != blank and featured_collection.products_count > 0 %}
         {% for product in featured_collection.products limit: featured_limit %}
-          <article class="scale-flow__product-card">
-            <a href="{{ product.url }}" class="scale-flow__product-link">
-              <div class="scale-flow__product-media">
-                {% if product.featured_image != blank %}
-                  {{
-                    product.featured_image
-                    | image_url: width: 800
-                    | image_tag:
-                      widths: '360, 480, 720, 800',
-                      loading: 'lazy',
-                      class: 'scale-flow__product-image',
-                      alt: product.featured_image.alt | default: product.title
-                  }}
-                {% else %}
-                  {{ 'product-1' | placeholder_svg_tag: 'scale-flow__product-placeholder' }}
-                {% endif %}
-              </div>
-              <div class="scale-flow__product-content">
-                <h3>{{ product.title }}</h3>
-                <div class="scale-flow__price">
-                  {{ product.price | money }}
-                </div>
-              </div>
-            </a>
-          </article>
-        {% endfor %}
-      {% else %}
-        {% for index in (1..featured_limit) %}
-          <article class="scale-flow__product-card">
-            <div class="scale-flow__product-media">
-              {{ 'product-' | append: index | placeholder_svg_tag: 'scale-flow__product-placeholder' }}
-            </div>
-            <div class="scale-flow__product-content">
-              <h3>Digital Blueprint {{ index }}</h3>
-              <div class="scale-flow__price">$99.00</div>
-            </div>
-          </article>
+          <article class="scale-flow__card"><a href="{{ product.url }}" class="scale-flow__product-link"><div class="scale-flow__product-media">{% if product.featured_image %}{{ product.featured_image | image_url: width: 800 | image_tag: class: 'scale-flow__product-image', widths: '360, 480, 720, 800', loading: 'lazy', alt: product.title }}{% else %}{{ 'product-1' | placeholder_svg_tag: 'scale-flow__product-placeholder' }}{% endif %}</div><h3>{{ product.title }}</h3><div class="scale-flow__price">{{ product.price | money }}</div></a></article>
         {% endfor %}
       {% endif %}
     </div>
   </div>
 
-  <div class="scale-flow__section scale-flow__faq scale-flow__glass-panel">
-  <div class="scale-flow__section scale-flow__proof scale-flow__glass-panel">
-    <div class="scale-flow__section-heading">
-      <p>{{ section.settings.proof_kicker }}</p>
-      <h2>{{ section.settings.proof_title }}</h2>
-      <p class="scale-flow__section-copy">{{ section.settings.proof_text }}</p>
-    </div>
-    <div class="scale-flow__proof-grid">
-      {% for block in section.blocks %}
-        {% if block.type == 'proof_item' %}
-          <article class="scale-flow__proof-card" {{ block.shopify_attributes }}>
-            <span class="scale-flow__lab-icon">{{ block.settings.icon }}</span>
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.text }}</p>
-          </article>
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class="scale-flow__stats-grid">
-      {% for block in section.blocks %}
-        {% if block.type == 'stat_item' %}
-          <article class="scale-flow__stat-card" {{ block.shopify_attributes }}>
-            <h3>{{ block.settings.metric }}</h3>
-            <p>{{ block.settings.label }}</p>
-          </article>
-        {% endif %}
-      {% endfor %}
-    </div>
+  <div class="scale-flow__section scale-flow__glass-panel">
+    <div class="scale-flow__section-heading"><p>{{ section.settings.proof_kicker }}</p><h2>{{ section.settings.proof_title }}</h2><p class="scale-flow__section-copy">{{ section.settings.proof_text }}</p></div>
+    <div class="scale-flow__proof-grid">{% for block in section.blocks %}{% if block.type == 'proof_item' %}<article class="scale-flow__card" {{ block.shopify_attributes }}><span class="scale-flow__lab-icon">{{ block.settings.icon }}</span><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></article>{% endif %}{% endfor %}</div>
+    <div class="scale-flow__stats-grid">{% for block in section.blocks %}{% if block.type == 'stat_item' %}<article class="scale-flow__card scale-flow__stat-card" {{ block.shopify_attributes }}><h3>{{ block.settings.metric }}</h3><p>{{ block.settings.label }}</p></article>{% endif %}{% endfor %}</div>
   </div>
 
-  <div class="scale-flow__section scale-flow__faq scale-flow__glass-panel">
-    <div class="scale-flow__section-heading">
-      <p>{{ section.settings.faq_kicker }}</p>
-      <h2>{{ section.settings.faq_title }}</h2>
-    </div>
-    <div class="scale-flow__faq-list">
-      {% for block in section.blocks %}
-        {% if block.type == 'faq_item' %}
-          <details class="scale-flow__faq-item" {{ block.shopify_attributes }}>
-            <summary>
-              <span class="scale-flow__faq-dot"></span>
-              {{ block.settings.question }}
-            </summary>
-            <div class="scale-flow__faq-answer">{{ block.settings.answer }}</div>
-          </details>
-        {% endif %}
-      {% endfor %}
-    </div>
+  <div class="scale-flow__section scale-flow__glass-panel">
+    <div class="scale-flow__section-heading"><p>{{ section.settings.faq_kicker }}</p><h2>{{ section.settings.faq_title }}</h2><p class="scale-flow__section-copy">{{ section.settings.faq_text }}</p></div>
+    <div class="scale-flow__faq-list">{% for block in section.blocks %}{% if block.type == 'faq_item' %}<details class="scale-flow__faq-item" {{ block.shopify_attributes }}><summary><span class="scale-flow__faq-dot"></span>{{ block.settings.question }}</summary><div class="scale-flow__faq-answer">{{ block.settings.answer }}</div></details>{% endif %}{% endfor %}</div>
+    <div class="scale-flow__faq-contact"><p>{{ section.settings.faq_contact_text }}</p><a href="{{ section.settings.faq_contact_link | default: '#' }}">{{ section.settings.faq_contact_label }}</a></div>
   </div>
 
-  <div class="scale-flow__section scale-flow__closing scale-flow__glass-panel">
-    <h2>{{ section.settings.closing_title }}</h2>
-    <p class="scale-flow__section-copy">{{ section.settings.closing_text }}</p>
-    {% if section.settings.closing_cta_label != blank %}
-      <a class="scale-flow__cta" href="{{ section.settings.closing_cta_link | default: '#' }}">
-        {{ section.settings.closing_cta_label }}
-      </a>
-    {% endif %}
-  </div>
+  <div class="scale-flow__section scale-flow__closing scale-flow__glass-panel"><p class="scale-flow__badge">{{ section.settings.closing_kicker }}</p><h2>{{ section.settings.closing_title }}</h2><p class="scale-flow__section-copy">{{ section.settings.closing_text }}</p><a class="scale-flow__cta" href="{{ section.settings.closing_cta_link | default: '#' }}">{{ section.settings.closing_cta_label }}</a></div>
+
+  <div class="scale-flow__section scale-flow__glass-panel"><h2>{{ section.settings.log_title }}</h2><div class="scale-flow__log-grid">{% for block in section.blocks %}{% if block.type == 'log_step' %}<article class="scale-flow__card" {{ block.shopify_attributes }}><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></article>{% endif %}{% endfor %}</div></div>
+
+  <div class="scale-flow__section scale-flow__glass-panel scale-flow__newsletter"><h2>{{ section.settings.newsletter_title }}</h2><p class="scale-flow__section-copy">{{ section.settings.newsletter_text }}</p>{% form 'customer', class: 'scale-flow__newsletter-form' %}<input type="hidden" name="contact[tags]" value="newsletter"><input type="email" name="contact[email]" placeholder="{{ section.settings.newsletter_placeholder }}" required><button class="scale-flow__cta" type="submit">{{ section.settings.newsletter_button }}</button>{% endform %}</div>
 </section>
 
 {% stylesheet %}
-  body:has(.scale-flow) {
-    background: #050505;
-  }
-
-  .content-for-layout:has(.scale-flow) {
-    background: #050505;
-  }
-
-  body:has(.scale-flow) footer {
-    background: #050505;
-    border-top: 1px solid rgb(255 255 255 / 8%);
-  }
-
-  .scale-flow {
-    --sf-bg: #050505;
-    --sf-glass: rgb(30 41 59 / 60%);
-    --sf-cyan: #00f5ff;
-    --sf-indigo: #6366f1;
-    --sf-title: #ffffff;
-    --sf-body: #94a3b8;
-    position: relative;
-    overflow: clip;
-    background: radial-gradient(circle at 20% 20%, rgb(0 245 255 / 10%), transparent 40%),
-      radial-gradient(circle at 80% 10%, rgb(99 102 241 / 16%), transparent 30%), var(--sf-bg);
-    color: var(--sf-body);
-    padding-inline: clamp(1rem, 4vw, 3rem);
-  }
-
-  .scale-flow__bg-texture {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgb(255 255 255 / 2%) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(255 255 255 / 2%) 1px, transparent 1px);
-    background-size: 44px 44px;
-    opacity: 0.2;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .scale-flow__hero,
-  .scale-flow__section {
-    position: relative;
-    z-index: 1;
-    max-width: 1240px;
-    margin-inline: auto;
-    margin-block: 0 clamp(2.5rem, 7vw, 5.5rem);
-  }
-
-  .scale-flow__glass-panel {
-    border: 1px solid rgb(255 255 255 / 14%);
-    background: linear-gradient(140deg, rgb(30 41 59 / 70%), rgb(30 41 59 / 40%));
-    backdrop-filter: blur(18px);
-    border-radius: 28px;
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 24%), 0 24px 60px rgb(0 0 0 / 42%);
-  }
-
-  .scale-flow__hero {
-    min-height: min(78svh, 820px);
-    display: grid;
-    place-items: center;
-    text-align: center;
-    isolation: isolate;
-    padding: clamp(2.5rem, 8vw, 7rem) clamp(1.4rem, 6vw, 6rem);
-  }
-
-  .scale-flow__hero-content {
-    max-width: 820px;
-  }
-
-  .scale-flow h1,
-  .scale-flow h2,
-  .scale-flow h3 {
-    color: var(--sf-title);
-    font-family: Outfit, Syne, "Segoe UI", sans-serif;
-    letter-spacing: 0.02em;
-  }
-
-  .scale-flow h1 {
-    margin: 0.25rem 0;
-    font-size: clamp(2rem, 5vw, 4rem);
-    line-height: 1.08;
-  }
-
-  .scale-flow__hero-title-alt {
-    color: transparent;
-    background: linear-gradient(120deg, var(--sf-cyan), var(--sf-indigo));
-    -webkit-background-clip: text;
-    background-clip: text;
-    margin-bottom: 1rem;
-  }
-
-  .scale-flow__hero-copy,
-  .scale-flow__section-copy {
-    font-family: Inter, Montserrat, "Segoe UI", sans-serif;
-    color: var(--sf-body);
-    font-size: clamp(1rem, 2.2vw, 1.2rem);
-    line-height: 1.6;
-    max-width: 72ch;
-    margin-inline: auto;
-  }
-
-  .scale-flow__badge {
-    display: inline-flex;
-    border-radius: 999px;
-    border: 1px solid rgb(0 245 255 / 40%);
-    background: rgb(0 245 255 / 12%);
-    padding: 0.38rem 1rem;
-    color: #d8fbff;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.74rem;
-    font-weight: 700;
-  }
-
-  .scale-flow__cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1.7rem;
-    padding: 0.9rem 1.65rem;
-    border-radius: 14px;
-    color: #05121f;
-    font-weight: 700;
-    text-decoration: none;
-    background: linear-gradient(120deg, var(--sf-cyan), var(--sf-indigo));
-    box-shadow: 0 0 20px rgb(0 245 255 / 35%);
-    transition: transform 120ms ease, box-shadow 140ms ease;
-  }
-
-  .scale-flow__cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 26px rgb(99 102 241 / 46%);
-  }
-
-  .scale-flow__trust-row {
-    margin-top: 1.6rem;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    color: #d8e7f3;
-    font-size: 0.9rem;
-  }
-
-  .scale-flow__trust-row span {
-    border: 1px solid rgb(255 255 255 / 15%);
-    border-radius: 12px;
-    padding: 0.42rem 0.75rem;
-    background: rgb(15 23 42 / 45%);
-  }
-
-  .scale-flow__section {
-    padding: clamp(1.4rem, 4vw, 3rem);
-  }
-
-  .scale-flow__section-heading {
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .scale-flow__section-heading p:first-child {
-    margin: 0;
-    color: var(--sf-cyan);
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-
-  .scale-flow h2 {
-    margin: 0.55rem 0 0.7rem;
-    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-    line-height: 1.15;
-  }
-
-  .scale-flow__lab-grid,
-  .scale-flow__streams-grid,
-  .scale-flow__product-grid,
-  .scale-flow__proof-grid,
-  .scale-flow__stats-grid {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .scale-flow__lab-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .scale-flow__lab-card,
-  .scale-flow__stream-card,
-  .scale-flow__product-card,
-  .scale-flow__proof-card,
-  .scale-flow__stat-card {
-    border: 1px solid rgb(255 255 255 / 14%);
-    border-radius: 18px;
-    background: rgb(15 23 42 / 45%);
-    padding: 1.1rem;
-    transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
-  }
-
-  .scale-flow__lab-card:hover,
-  .scale-flow__stream-card:hover,
-  .scale-flow__product-card:hover,
-  .scale-flow__proof-card:hover,
-  .scale-flow__stat-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 20px rgb(0 245 255 / 16%);
-    border-color: rgb(0 245 255 / 35%);
-  }
-
-  .scale-flow__lab-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 0.75rem;
-    font-size: 1.2rem;
-    background: rgb(0 245 255 / 15%);
-    color: var(--sf-cyan);
-    box-shadow: 0 0 18px rgb(0 245 255 / 26%);
-  }
-
-  .scale-flow__lab-card h3,
-  .scale-flow__stream-card h3,
-  .scale-flow__product-content h3 {
-    margin: 0 0 0.4rem;
-    font-size: 1.12rem;
-  }
-
-  .scale-flow__lab-card p,
-  .scale-flow__stream-card p,
-  .scale-flow__faq-answer {
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  .scale-flow__streams-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-bottom: 1.2rem;
-  }
-
-  .scale-flow__proof-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    margin-bottom: 1rem;
-  }
-
-  .scale-flow__stats-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .scale-flow__stat-card {
-    text-align: center;
-  }
-
-  .scale-flow__stat-card h3 {
-    margin: 0;
-    color: var(--sf-cyan);
-    font-size: clamp(1.4rem, 3vw, 2rem);
-  }
-
-  .scale-flow__stat-card p {
-    margin: 0.35rem 0 0;
-  }
-
-  .scale-flow__closing {
-    text-align: center;
-  }
-
-  .scale-flow__stream-label {
-    color: var(--sf-cyan);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.74rem;
-    font-weight: 700;
-    margin-bottom: 0.45rem;
-  }
-
-  .scale-flow__streams {
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  .scale-flow__product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .scale-flow__product-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .scale-flow__product-media {
-    border-radius: 14px;
-    overflow: hidden;
-    margin-bottom: 0.7rem;
-    aspect-ratio: 16 / 11;
-    background: rgb(0 0 0 / 20%);
-  }
-
-  .scale-flow__product-image,
-  .scale-flow__product-placeholder svg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .scale-flow__price {
-    color: var(--sf-cyan);
-    font-weight: 700;
-  }
-
-  .scale-flow__faq-list {
-    display: grid;
-    gap: 0.7rem;
-  }
-
-  .scale-flow__faq-item {
-    border: 1px solid rgb(255 255 255 / 12%);
-    border-radius: 14px;
-    padding: 0.85rem 0.95rem;
-    background: rgb(15 23 42 / 42%);
-  }
-
-  .scale-flow__faq-item summary {
-    list-style: none;
-    display: flex;
-    gap: 0.7rem;
-    align-items: center;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 600;
-  }
-
-  .scale-flow__faq-item summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .scale-flow__faq-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: var(--sf-cyan);
-    box-shadow: 0 0 14px rgb(0 245 255 / 62%);
-    flex: 0 0 auto;
-  }
-
-  .scale-flow__faq-answer {
-    margin-top: 0.7rem;
-    padding-left: 1.7rem;
-  }
-
-  .scale-flow__floating-layer {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .scale-flow__shape {
-    position: absolute;
-    display: block;
-    border-radius: 999px;
-    transform: translate3d(0, 0, 0);
-    animation: sf-float 10s ease-in-out infinite;
-    will-change: transform;
-    background: linear-gradient(160deg, rgb(0 245 255 / 36%), rgb(99 102 241 / 38%));
-    border: 1px solid rgb(255 255 255 / 25%);
-    box-shadow: inset 0 1px 8px rgb(255 255 255 / 18%), 0 0 16px rgb(0 245 255 / 28%);
-    backdrop-filter: blur(6px);
-  }
-
-  .scale-flow__shape--sphere {
-    width: clamp(90px, 10vw, 150px);
-    height: clamp(90px, 10vw, 150px);
-    top: 12%;
-    left: 6%;
-  }
-
-  .scale-flow__shape--cube {
-    width: clamp(72px, 8vw, 122px);
-    height: clamp(72px, 8vw, 122px);
-    border-radius: 24px;
-    right: 10%;
-    top: 18%;
-    animation-duration: 12s;
-  }
-
-  .scale-flow__shape--thread {
-    width: 220px;
-    height: 80px;
-    border-radius: 999px;
-    bottom: 12%;
-    right: 18%;
-    transform: rotate(-12deg);
-    animation-duration: 14s;
-  }
-
-  .scale-flow__shape--small {
-    width: 58px;
-    height: 58px;
-    top: 67%;
-    left: 19%;
-    animation-duration: 11s;
-  }
-
-  .scale-flow__shape--wide {
-    width: min(32vw, 320px);
-    left: 9%;
-    top: 9%;
-  }
-
-  @keyframes sf-float {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    50% {
-      transform: translate3d(0, -14px, 0);
-    }
-    100% {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-
-  @media screen and (max-width: 990px) {
-    .scale-flow__lab-grid,
-    .scale-flow__streams-grid,
-    .scale-flow__product-grid,
-    .scale-flow__proof-grid,
-    .scale-flow__stats-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media screen and (max-width: 740px) {
-    .scale-flow__lab-grid,
-    .scale-flow__streams-grid,
-    .scale-flow__product-grid,
-    .scale-flow__proof-grid,
-    .scale-flow__stats-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .scale-flow__shape--thread,
-    .scale-flow__shape--wide {
-      display: none;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .scale-flow__shape {
-      animation: none;
-    }
-  }
+  .scale-flow{--sf-bg:#050505;--sf-cyan:#00f5ff;--sf-indigo:#6366f1;--sf-title:#fff;--sf-body:#94a3b8;position:relative;overflow:clip;background:radial-gradient(circle at 20% 20%,rgb(0 245 255 / 10%),transparent 40%),radial-gradient(circle at 80% 10%,rgb(99 102 241 / 16%),transparent 30%),var(--sf-bg);color:var(--sf-body);padding-inline:clamp(1rem,4vw,3rem)}.scale-flow__bg-texture{position:absolute;inset:0;background-image:linear-gradient(rgb(255 255 255 / 2%) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / 2%) 1px,transparent 1px);background-size:44px 44px;opacity:.2;pointer-events:none;z-index:0}.scale-flow__section,.scale-flow__hero{position:relative;z-index:1;max-width:1240px;margin-inline:auto;margin-block:0 clamp(2rem,6vw,4rem)}.scale-flow__glass-panel{border:1px solid rgb(255 255 255 / 14%);background:linear-gradient(140deg,rgb(30 41 59 / 70%),rgb(30 41 59 / 40%));backdrop-filter:blur(18px);border-radius:28px;box-shadow:inset 0 1px 0 rgb(255 255 255 / 24%),0 24px 60px rgb(0 0 0 / 42%);padding:clamp(1.2rem,3vw,2.5rem)}.scale-flow__hero{min-height:min(78svh,820px);display:grid;place-items:center;text-align:center;isolation:isolate}.scale-flow h1,.scale-flow h2,.scale-flow h3{color:var(--sf-title);font-family:Outfit,Syne,"Segoe UI",sans-serif;letter-spacing:.02em}.scale-flow h1{margin:.2rem 0;font-size:clamp(2rem,5vw,4rem)}.scale-flow__hero-title-alt{color:transparent;background:linear-gradient(120deg,var(--sf-cyan),var(--sf-indigo));-webkit-background-clip:text;background-clip:text}.scale-flow__hero-copy,.scale-flow__section-copy{font-family:Inter,Montserrat,"Segoe UI",sans-serif;line-height:1.6;max-width:72ch;margin-inline:auto}.scale-flow__badge{display:inline-flex;border-radius:999px;border:1px solid rgb(0 245 255 / 40%);background:rgb(0 245 255 / 12%);padding:.38rem 1rem;color:#d8fbff;text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;font-weight:700}.scale-flow__hero-ctas{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}.scale-flow__cta{display:inline-flex;align-items:center;justify-content:center;padding:.9rem 1.65rem;border-radius:14px;color:#05121f;font-weight:700;text-decoration:none;background:linear-gradient(120deg,var(--sf-cyan),var(--sf-indigo));box-shadow:0 0 20px rgb(0 245 255 / 35%)}.scale-flow__cta--ghost{background:transparent;color:#fff;border:1px solid rgb(255 255 255 / 20%);box-shadow:none}.scale-flow__trust-row{margin-top:1.2rem;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}.scale-flow__trust-row span{border:1px solid rgb(255 255 255 / 15%);border-radius:12px;padding:.42rem .75rem;background:rgb(15 23 42 / 45%)}.scale-flow__section-heading{text-align:center;margin-bottom:1.2rem}.scale-flow__section-heading p:first-child{margin:0;color:var(--sf-cyan);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700}.scale-flow h2{margin:.5rem 0 .7rem;font-size:clamp(1.6rem,3.5vw,2.6rem)}.scale-flow__lab-grid,.scale-flow__streams-grid,.scale-flow__product-grid,.scale-flow__proof-grid,.scale-flow__stats-grid,.scale-flow__log-grid{display:grid;gap:1rem}.scale-flow__lab-grid,.scale-flow__streams-grid,.scale-flow__product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.scale-flow__proof-grid,.scale-flow__stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.scale-flow__log-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.scale-flow__card{border:1px solid rgb(255 255 255 / 14%);border-radius:18px;background:rgb(15 23 42 / 45%);padding:1rem}.scale-flow__lab-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:.75rem;background:rgb(0 245 255 / 15%);color:var(--sf-cyan)}.scale-flow__stream-label{color:var(--sf-cyan);letter-spacing:.08em;text-transform:uppercase;font-size:.74rem;font-weight:700}.scale-flow__stream-link{display:inline-block;margin-top:.5rem;color:var(--sf-cyan);font-weight:700;text-decoration:none}.scale-flow__product-link{text-decoration:none;color:inherit;display:block}.scale-flow__product-media{border-radius:14px;overflow:hidden;margin-bottom:.7rem;aspect-ratio:16/11;background:rgb(0 0 0 / 20%)}.scale-flow__product-image,.scale-flow__product-placeholder svg{width:100%;height:100%;object-fit:cover;display:block}.scale-flow__price{color:var(--sf-cyan);font-weight:700}.scale-flow__stat-card{text-align:center}.scale-flow__stat-card h3{color:var(--sf-cyan)}.scale-flow__faq-list{display:grid;gap:.7rem}.scale-flow__faq-item{border:1px solid rgb(255 255 255 / 12%);border-radius:14px;padding:.85rem .95rem;background:rgb(15 23 42 / 42%)}.scale-flow__faq-item summary{list-style:none;display:flex;gap:.7rem;align-items:center;color:#fff;cursor:pointer;font-weight:600}.scale-flow__faq-item summary::-webkit-details-marker{display:none}.scale-flow__faq-dot{width:10px;height:10px;border-radius:999px;background:var(--sf-cyan);box-shadow:0 0 14px rgb(0 245 255 / 62%)}.scale-flow__faq-contact{text-align:center;margin-top:1rem}.scale-flow__faq-contact a{color:var(--sf-cyan);text-decoration:none;font-weight:700}.scale-flow__closing,.scale-flow__newsletter{text-align:center}.scale-flow__newsletter-form{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;margin-top:1rem}.scale-flow__newsletter-form input{min-width:min(100%,360px);min-height:46px;border-radius:12px;border:1px solid rgb(255 255 255 / 20%);background:rgb(15 23 42 / 55%);color:#fff;padding:.65rem .75rem}.scale-flow__floating-layer{position:absolute;inset:0;pointer-events:none;z-index:-1}.scale-flow__shape{position:absolute;display:block;border-radius:999px;transform:translate3d(0,0,0);animation:sf-float 10s ease-in-out infinite;background:linear-gradient(160deg,rgb(0 245 255 / 36%),rgb(99 102 241 / 38%));border:1px solid rgb(255 255 255 / 25%)}.scale-flow__shape--sphere{width:clamp(90px,10vw,150px);height:clamp(90px,10vw,150px);top:12%;left:6%}.scale-flow__shape--cube{width:clamp(72px,8vw,122px);height:clamp(72px,8vw,122px);border-radius:24px;right:10%;top:18%}.scale-flow__shape--thread{width:220px;height:80px;border-radius:999px;bottom:12%;right:18%;transform:rotate(-12deg)}.scale-flow__shape--small{width:58px;height:58px;top:67%;left:19%}.scale-flow__shape--wide{width:min(32vw,320px);left:9%;top:9%}@keyframes sf-float{0%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-14px,0)}100%{transform:translate3d(0,0,0)}}@media screen and (max-width:990px){.scale-flow__lab-grid,.scale-flow__streams-grid,.scale-flow__product-grid,.scale-flow__proof-grid,.scale-flow__stats-grid,.scale-flow__log-grid{grid-template-columns:1fr 1fr}}@media screen and (max-width:740px){.scale-flow__lab-grid,.scale-flow__streams-grid,.scale-flow__product-grid,.scale-flow__proof-grid,.scale-flow__stats-grid,.scale-flow__log-grid{grid-template-columns:1fr}.scale-flow__shape--thread,.scale-flow__shape--wide{display:none}}
 {% endstylesheet %}
 
 <script>
   (() => {
     const root = document.getElementById('ScaleFlow-{{ section.id }}');
     if (!root || root.dataset.flowInit === 'true') return;
-
     root.dataset.flowInit = 'true';
     const shapes = Array.from(root.querySelectorAll('.scale-flow__shape[data-speed]'));
-    if (!shapes.length) return;
-
     const pointer = { x: 0, y: 0 };
     const state = { x: 0, y: 0 };
-
-    const updatePointer = (event) => {
+    root.addEventListener('pointermove', (event) => {
       const bounds = root.getBoundingClientRect();
       pointer.x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
       pointer.y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
-    };
-
-    root.addEventListener('pointermove', updatePointer, { passive: true });
-
-    const onScroll = () => {
+    }, { passive: true });
+    window.addEventListener('scroll', () => {
       const bounds = root.getBoundingClientRect();
-      const factor = Math.max(-1, Math.min(1, -bounds.top / window.innerHeight));
-      pointer.y = factor * 0.8;
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-
+      pointer.y = Math.max(-1, Math.min(1, -bounds.top / window.innerHeight)) * 0.8;
+    }, { passive: true });
     const animate = () => {
       state.x += (pointer.x - state.x) * 0.06;
       state.y += (pointer.y - state.y) * 0.06;
-
       shapes.forEach((shape) => {
         const speed = Number(shape.dataset.speed || 0.02);
-        const x = state.x * (speed * 100) * 8;
-        const y = state.y * (speed * 100) * 8;
-        shape.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        shape.style.transform = `translate3d(${state.x * (speed * 100) * 8}px, ${state.y * (speed * 100) * 8}px, 0)`;
       });
-
       window.requestAnimationFrame(animate);
     };
-
     window.requestAnimationFrame(animate);
   })();
 </script>
@@ -697,476 +109,82 @@
   "tag": "section",
   "class": "section-wrapper",
   "settings": [
-    {
-      "type": "header",
-      "content": "Hero"
-    },
-    {
-      "type": "text",
-      "id": "hero_badge",
-      "label": "Etiqueta superior",
-      "default": "Hybrid Intelligence Commerce"
-    },
-    {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Titulo principal",
-      "default": "Escala Mas Inteligente."
-    },
-    {
-      "type": "text",
-      "id": "hero_title_alt",
-      "label": "Titulo principal linea 2",
-      "default": "Fluye Mas Lejos."
-    },
-    {
-      "type": "textarea",
-      "id": "hero_text",
-      "label": "Texto principal",
-      "default": "Accede a guias verificadas, toolkits y blueprints de automatizacion para escalar tu negocio con Inteligencia Hibrida."
-    },
-    {
-      "type": "text",
-      "id": "hero_cta_label",
-      "label": "Texto del boton CTA",
-      "default": "Explorar Catalogo"
-    },
-    {
-      "type": "url",
-      "id": "hero_cta_link",
-      "label": "Enlace del boton CTA"
-    },
-    {
-      "type": "text",
-      "id": "trust_1",
-      "label": "Trust item 1",
-      "default": "Verificado por expertos"
-    },
-    {
-      "type": "text",
-      "id": "trust_2",
-      "label": "Trust item 2",
-      "default": "Descarga instantanea"
-    },
-    {
-      "type": "text",
-      "id": "trust_3",
-      "label": "Trust item 3",
-      "default": "Mas de 10,000 fundadores"
-    },
-    {
-      "type": "header",
-      "content": "The Lab"
-    },
-    {
-      "type": "text",
-      "id": "lab_kicker",
-      "label": "Kicker The Lab",
-      "default": "The Lab"
-    },
-    {
-      "type": "text",
-      "id": "lab_title",
-      "label": "Titulo The Lab",
-      "default": "Impulsado por Inteligencia Hibrida"
-    },
-    {
-      "type": "textarea",
-      "id": "lab_text",
-      "label": "Texto The Lab",
-      "default": "Combinamos el juicio irremplazable de expertos humanos con la velocidad de la IA para generar estrategias que realmente funcionan."
-    },
-    {
-      "type": "header",
-      "content": "Productos destacados"
-    },
-    {
-      "type": "text",
-      "id": "featured_kicker",
-      "label": "Kicker destacados",
-      "default": "Featured Streams"
-    },
-    {
-      "type": "text",
-      "id": "featured_title",
-      "label": "Titulo destacados",
-      "default": "Elige Tu Stream"
-    },
-    {
-      "type": "textarea",
-      "id": "featured_text",
-      "label": "Texto destacados",
-      "default": "Cada toolkit esta construido para un unico objetivo: crecimiento medible."
-    },
-    {
-      "type": "collection",
-      "id": "featured_collection",
-      "label": "Coleccion para mostrar"
-    },
-    {
-      "type": "range",
-      "id": "featured_products_limit",
-      "label": "Numero de productos",
-      "min": 3,
-      "max": 9,
-      "step": 1,
-      "default": 3
-    },
-    {
-      "type": "header",
-      "content": "FAQ"
-    },
-    {
-      "type": "text",
-      "id": "faq_kicker",
-      "label": "Kicker FAQ",
-      "default": "Scale Clarity"
-    },
-    {
-      "type": "text",
-      "id": "faq_title",
-      "label": "Titulo FAQ",
-      "default": "Todo Lo Que Necesitas Saber"
-    },
-    {
-      "type": "header",
-      "content": "Prueba social"
-    },
-    {
-      "type": "text",
-      "id": "proof_kicker",
-      "label": "Kicker prueba social",
-      "default": "Por que Scale Flow"
-    },
-    {
-      "type": "text",
-      "id": "proof_title",
-      "label": "Titulo prueba social",
-      "default": "Por que los fundadores eligen Scale Flow"
-    },
-    {
-      "type": "textarea",
-      "id": "proof_text",
-      "label": "Texto prueba social",
-      "default": "Construido por operadores, validado en las trincheras y respaldado por miles de fundadores."
-    },
-    {
-      "type": "header",
-      "content": "Cierre CTA"
-    },
-    {
-      "type": "text",
-      "id": "closing_title",
-      "label": "Titulo cierre",
-      "default": "¿Listo para Escalar Mas Inteligente?"
-    },
-    {
-      "type": "textarea",
-      "id": "closing_text",
-      "label": "Texto cierre",
-      "default": "Activa tus sistemas y transforma tu crecimiento con playbooks accionables desde hoy."
-    },
-    {
-      "type": "text",
-      "id": "closing_cta_label",
-      "label": "Texto CTA cierre",
-      "default": "Explorar Catalogo"
-    },
-    {
-      "type": "url",
-      "id": "closing_cta_link",
-      "label": "Enlace CTA cierre"
-    },
-    {
-      "type": "header",
-      "content": "Espaciado"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "Padding superior",
-      "min": 0,
-      "max": 120,
-      "step": 4,
-      "default": 24,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "Padding inferior",
-      "min": 0,
-      "max": 120,
-      "step": 4,
-      "default": 24,
-      "unit": "px"
-    }
+    { "type": "text", "id": "hero_badge", "label": "Hero badge", "default": "Toolkits de Crecimiento con IA" },
+    { "type": "text", "id": "hero_title", "label": "Hero titulo 1", "default": "Escala Mas Inteligente." },
+    { "type": "text", "id": "hero_title_alt", "label": "Hero titulo 2", "default": "Fluye Mas Lejos." },
+    { "type": "textarea", "id": "hero_text", "label": "Hero texto", "default": "Accede a guias verificadas, toolkits y blueprints de automatizacion para escalar tu negocio." },
+    { "type": "text", "id": "hero_cta_label", "label": "CTA primario", "default": "Explorar la Biblioteca" },
+    { "type": "url", "id": "hero_cta_link", "label": "Link CTA primario" },
+    { "type": "text", "id": "hero_secondary_cta_label", "label": "CTA secundario", "default": "Ver Como Funciona" },
+    { "type": "url", "id": "hero_secondary_cta_link", "label": "Link CTA secundario" },
+    { "type": "text", "id": "trust_1", "label": "Trust 1", "default": "Verificado por expertos" },
+    { "type": "text", "id": "trust_2", "label": "Trust 2", "default": "Descarga instantanea" },
+    { "type": "text", "id": "trust_3", "label": "Trust 3", "default": "Mas de 10,000 fundadores" },
+    { "type": "text", "id": "lab_kicker", "label": "Lab kicker", "default": "El Laboratorio" },
+    { "type": "text", "id": "lab_title", "label": "Lab titulo", "default": "Impulsado por Inteligencia Hibrida" },
+    { "type": "textarea", "id": "lab_text", "label": "Lab texto", "default": "Combinamos el juicio de expertos humanos con la velocidad de la IA." },
+    { "type": "text", "id": "featured_kicker", "label": "Streams kicker", "default": "Streams" },
+    { "type": "text", "id": "featured_title", "label": "Streams titulo", "default": "Elige Tu Stream" },
+    { "type": "textarea", "id": "featured_text", "label": "Streams texto", "default": "Cada toolkit esta construido para un unico objetivo: crecimiento medible." },
+    { "type": "text", "id": "stream_cta_label", "label": "Texto link stream", "default": "Explorar Stream" },
+    { "type": "collection", "id": "featured_collection", "label": "Coleccion destacada" },
+    { "type": "range", "id": "featured_products_limit", "label": "Cantidad productos", "min": 3, "max": 9, "step": 1, "default": 3 },
+    { "type": "text", "id": "proof_kicker", "label": "Proof kicker", "default": "Por Que Scale Flow" },
+    { "type": "text", "id": "proof_title", "label": "Proof titulo", "default": "Por Que los Fundadores Eligen Scale Flow" },
+    { "type": "textarea", "id": "proof_text", "label": "Proof texto", "default": "Construido por operadores y validado en el terreno." },
+    { "type": "text", "id": "faq_kicker", "label": "FAQ kicker", "default": "Preguntas Frecuentes" },
+    { "type": "text", "id": "faq_title", "label": "FAQ titulo", "default": "Todo Lo Que Necesitas Saber" },
+    { "type": "textarea", "id": "faq_text", "label": "FAQ texto", "default": "Sin rodeos - solo respuestas." },
+    { "type": "text", "id": "faq_contact_text", "label": "FAQ contacto texto", "default": "¿Aun tienes preguntas?" },
+    { "type": "text", "id": "faq_contact_label", "label": "FAQ contacto boton", "default": "Contactanos ->" },
+    { "type": "url", "id": "faq_contact_link", "label": "FAQ contacto link" },
+    { "type": "text", "id": "closing_kicker", "label": "Cierre kicker", "default": "Tu Proximo Paso" },
+    { "type": "text", "id": "closing_title", "label": "Cierre titulo", "default": "¿Listo para Escalar Mas Inteligente?" },
+    { "type": "textarea", "id": "closing_text", "label": "Cierre texto", "default": "Activa tus sistemas y transforma tu crecimiento desde hoy." },
+    { "type": "text", "id": "closing_cta_label", "label": "Cierre CTA", "default": "Empieza a Escalar Ahora" },
+    { "type": "url", "id": "closing_cta_link", "label": "Cierre CTA link" },
+    { "type": "text", "id": "log_title", "label": "Flow log titulo", "default": "The Flow Lab Log" },
+    { "type": "text", "id": "newsletter_title", "label": "Newsletter titulo", "default": "Unete a nuestra lista de correo" },
+    { "type": "textarea", "id": "newsletter_text", "label": "Newsletter texto", "default": "Consigue ofertas exclusivas y acceso anticipado a nuevos productos." },
+    { "type": "text", "id": "newsletter_placeholder", "label": "Newsletter placeholder", "default": "Tu email" },
+    { "type": "text", "id": "newsletter_button", "label": "Newsletter boton", "default": "Suscribirme" },
+    { "type": "range", "id": "padding-block-start", "label": "Padding superior", "min": 0, "max": 120, "step": 4, "default": 24, "unit": "px" },
+    { "type": "range", "id": "padding-block-end", "label": "Padding inferior", "min": 0, "max": 120, "step": 4, "default": 24, "unit": "px" }
   ],
   "blocks": [
-    {
-      "type": "lab_item",
-      "name": "Item The Lab",
-      "limit": 3,
-      "settings": [
-        {
-          "type": "text",
-          "id": "icon",
-          "label": "Icono (texto o emoji)",
-          "default": "+"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Titulo",
-          "default": "Expert-Verified Intelligence"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Texto",
-          "default": "Every framework is validated by operators with proven scaling experience."
-        }
-      ]
-    },
-    {
-      "type": "stream_item",
-      "name": "Stream",
-      "limit": 3,
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Etiqueta",
-          "default": "Stream"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Titulo",
-          "default": "CreativeScale"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Texto",
-          "default": "Creative systems and AI prompts to produce strategic content that converts."
-        }
-      ]
-    },
-    {
-      "type": "proof_item",
-      "name": "Item prueba social",
-      "settings": [
-        {
-          "type": "text",
-          "id": "icon",
-          "label": "Icono",
-          "default": "+"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Titulo",
-          "default": "Verificado por expertos"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Texto",
-          "default": "Guias revisadas por operadores activos con experiencia real."
-        }
-      ]
-    },
-    {
-      "type": "stat_item",
-      "name": "Metrica",
-      "settings": [
-        {
-          "type": "text",
-          "id": "metric",
-          "label": "Numero",
-          "default": "12K+"
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Etiqueta",
-          "default": "Fundadores"
-        }
-      ]
-    },
-    {
-      "type": "faq_item",
-      "name": "Pregunta FAQ",
-      "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Pregunta",
-          "default": "How fast can I deploy these assets?"
-        },
-        {
-          "type": "textarea",
-          "id": "answer",
-          "label": "Respuesta",
-          "default": "Most customers implement the first blueprint in under 48 hours with immediate workflow gains."
-        }
-      ]
-    }
+    { "type": "lab_item", "name": "Lab item", "settings": [ { "type": "text", "id": "icon", "label": "Icono", "default": "+" }, { "type": "text", "id": "title", "label": "Titulo", "default": "Experiencia Humana" }, { "type": "textarea", "id": "text", "label": "Texto", "default": "Curado por operadores reales que han construido y escalado negocios." } ] },
+    { "type": "stream_item", "name": "Stream item", "settings": [ { "type": "text", "id": "label", "label": "Etiqueta", "default": "Marca y Contenido" }, { "type": "text", "id": "title", "label": "Titulo", "default": "CreativeScale" }, { "type": "textarea", "id": "text", "label": "Texto", "default": "Atrae y convierte con sistemas de contenido irresistibles." }, { "type": "url", "id": "link", "label": "Link" } ] },
+    { "type": "proof_item", "name": "Proof item", "settings": [ { "type": "text", "id": "icon", "label": "Icono", "default": "+" }, { "type": "text", "id": "title", "label": "Titulo", "default": "Verificado por Expertos" }, { "type": "textarea", "id": "text", "label": "Texto", "default": "Cada guia revisada por operadores activos." } ] },
+    { "type": "stat_item", "name": "Stat item", "settings": [ { "type": "text", "id": "metric", "label": "Numero", "default": "12K+" }, { "type": "text", "id": "label", "label": "Etiqueta", "default": "Fundadores" } ] },
+    { "type": "faq_item", "name": "FAQ item", "settings": [ { "type": "text", "id": "question", "label": "Pregunta", "default": "¿Tengo acceso de por vida?" }, { "type": "textarea", "id": "answer", "label": "Respuesta", "default": "Si. Cada compra incluye acceso de por vida y todas las actualizaciones futuras." } ] },
+    { "type": "log_step", "name": "Flow step", "settings": [ { "type": "text", "id": "title", "label": "Titulo", "default": "Step 1: Expert Extraction" }, { "type": "textarea", "id": "text", "label": "Texto", "default": "Extraemos la estrategia de un profesional top." } ] }
   ],
   "presets": [
     {
       "name": "Scale Flow Home",
       "blocks": {
-        "lab_1": {
-          "type": "lab_item",
-          "settings": {
-            "icon": "+",
-            "title": "Human Strategy",
-            "text": "Market-tested operator logic guides every framework and recommendation."
-          }
-        },
-        "lab_2": {
-          "type": "lab_item",
-          "settings": {
-            "icon": "*",
-            "title": "AI Execution",
-            "text": "Automated prompts and workflows remove bottlenecks and compress execution time."
-          }
-        },
-        "lab_3": {
-          "type": "lab_item",
-          "settings": {
-            "icon": "#",
-            "title": "Compounding Growth",
-            "text": "Systems stack together so each implementation increases your operational leverage."
-          }
-        },
-        "stream_1": {
-          "type": "stream_item",
-          "settings": {
-            "label": "Stream",
-            "title": "CreativeScale",
-            "text": "Build high-performing content engines powered by strategic AI ideation."
-          }
-        },
-        "stream_2": {
-          "type": "stream_item",
-          "settings": {
-            "label": "Stream",
-            "title": "SalesScale",
-            "text": "Deploy conversion scripts and offers that increase average order value."
-          }
-        },
-        "stream_3": {
-          "type": "stream_item",
-          "settings": {
-            "label": "Stream",
-            "title": "BizScale",
-            "text": "Standardize operations with automation blueprints that free owner bandwidth."
-          }
-        },
-        "proof_1": {
-          "type": "proof_item",
-          "settings": {
-            "icon": "+",
-            "title": "Verificado por expertos",
-            "text": "Cada guia revisada por operadores activos con experiencia de escalado."
-          }
-        },
-        "proof_2": {
-          "type": "proof_item",
-          "settings": {
-            "icon": "*",
-            "title": "Listo para implementar",
-            "text": "Frameworks accionables para obtener impacto desde el primer dia."
-          }
-        },
-        "proof_3": {
-          "type": "proof_item",
-          "settings": {
-            "icon": "#",
-            "title": "Potenciado por IA",
-            "text": "Sistemas optimizados con herramientas de IA para mayor eficiencia."
-          }
-        },
-        "proof_4": {
-          "type": "proof_item",
-          "settings": {
-            "icon": ">",
-            "title": "Resultados reales",
-            "text": "Playbooks diseñados para rendimiento medible y crecimiento continuo."
-          }
-        },
-        "stat_1": {
-          "type": "stat_item",
-          "settings": {
-            "metric": "500+",
-            "label": "Productos"
-          }
-        },
-        "stat_2": {
-          "type": "stat_item",
-          "settings": {
-            "metric": "12K+",
-            "label": "Fundadores"
-          }
-        },
-        "stat_3": {
-          "type": "stat_item",
-          "settings": {
-            "metric": "97%",
-            "label": "Satisfaccion"
-          }
-        },
-        "stat_4": {
-          "type": "stat_item",
-          "settings": {
-            "metric": "<48h",
-            "label": "Primer resultado"
-          }
-        },
-        "faq_1": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Are the guides beginner-friendly?",
-            "answer": "Yes. Each asset includes tactical steps, examples, and implementation checkpoints."
-          }
-        },
-        "faq_2": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I use the systems with my current stack?",
-            "answer": "The playbooks are tool-agnostic and include options for common ecommerce and marketing platforms."
-          }
-        },
-        "faq_3": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How often are products updated?",
-            "answer": "Core products are updated regularly as AI and market best practices evolve."
-          }
-        }
+        "lab_1": { "type": "lab_item", "settings": { "icon": "+", "title": "Experiencia Humana", "text": "Curado por operadores reales que han construido y escalado negocios de verdad." } },
+        "lab_2": { "type": "lab_item", "settings": { "icon": "*", "title": "Eficiencia con IA", "text": "Cada framework optimizado y testado con IA para maximo rendimiento." } },
+        "lab_3": { "type": "lab_item", "settings": { "icon": "#", "title": "Flujo Accionable", "text": "Blueprints paso a paso que puedes implementar de inmediato." } },
+        "stream_1": { "type": "stream_item", "settings": { "label": "Marca y Contenido", "title": "CreativeScale", "text": "Atrae y convierte con sistemas de contenido irresistibles." } },
+        "stream_2": { "type": "stream_item", "settings": { "label": "Ingresos y Funnels", "title": "SalesScale", "text": "Construye funnels de alta conversion y secuencias de ventas." } },
+        "stream_3": { "type": "stream_item", "settings": { "label": "Operaciones e IA", "title": "BizScale", "text": "Automatiza operaciones y gana apalancamiento con SOPs." } },
+        "proof_1": { "type": "proof_item", "settings": { "icon": "+", "title": "Verificado por Expertos", "text": "Cada guia revisada por operadores activos con negocios de 7 cifras." } },
+        "proof_2": { "type": "proof_item", "settings": { "icon": "*", "title": "Listo para Implementar", "text": "Frameworks listos para ejecutar desde el primer dia." } },
+        "proof_3": { "type": "proof_item", "settings": { "icon": "#", "title": "Potenciado por IA", "text": "Sistemas testeados y optimizados con IA." } },
+        "proof_4": { "type": "proof_item", "settings": { "icon": ">", "title": "Resultados Garantizados", "text": "Si no ves resultados, lo solucionamos." } },
+        "stat_1": { "type": "stat_item", "settings": { "metric": "500+", "label": "Productos" } },
+        "stat_2": { "type": "stat_item", "settings": { "metric": "12K+", "label": "Fundadores" } },
+        "stat_3": { "type": "stat_item", "settings": { "metric": "97%", "label": "Satisfaccion" } },
+        "stat_4": { "type": "stat_item", "settings": { "metric": "<48h", "label": "Primer resultado" } },
+        "faq_1": { "type": "faq_item", "settings": { "question": "¿Que hay exactamente dentro de un producto de Scale Flow?", "answer": "Cada producto incluye guias, plantillas y blueprints listos para ejecutar." } },
+        "faq_2": { "type": "faq_item", "settings": { "question": "¿Es para principiantes o avanzados?", "answer": "Esta disenado para ambos: base clara y capas avanzadas de optimizacion." } },
+        "faq_3": { "type": "faq_item", "settings": { "question": "¿Tengo acceso de por vida?", "answer": "Si. Incluye acceso de por vida y actualizaciones futuras." } },
+        "log_1": { "type": "log_step", "settings": { "title": "Step 1: Expert Extraction", "text": "Extraemos la estrategia de un profesional top." } },
+        "log_2": { "type": "log_step", "settings": { "title": "Step 2: AI Optimization", "text": "Convertimos esa estrategia en prompts de alto rendimiento." } },
+        "log_3": { "type": "log_step", "settings": { "title": "Step 3: Flow Delivery", "text": "Te entregamos el sistema listo para usar." } }
       },
-      "block_order": [
-        "lab_1",
-        "lab_2",
-        "lab_3",
-        "stream_1",
-        "stream_2",
-        "stream_3",
-        "proof_1",
-        "proof_2",
-        "proof_3",
-        "proof_4",
-        "stat_1",
-        "stat_2",
-        "stat_3",
-        "stat_4",
-        "faq_1",
-        "faq_2",
-        "faq_3"
-      ]
+      "block_order": ["lab_1","lab_2","lab_3","stream_1","stream_2","stream_3","proof_1","proof_2","proof_3","proof_4","stat_1","stat_2","stat_3","stat_4","faq_1","faq_2","faq_3","log_1","log_2","log_3"]
     }
   ]
 }

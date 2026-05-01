@@ -40,6 +40,8 @@
           "settings": {
             "author": "Marcos R.",
             "location": "Madrid",
+            "when": "Hace 2 semanas",
+            "verification": "Compra verificada",
             "quote": "En menos de una semana transforme mi flujo de contenido con resultados visibles."
           }
         },
@@ -48,6 +50,8 @@
           "settings": {
             "author": "Paula S.",
             "location": "Barcelona",
+            "when": "Hace 1 mes",
+            "verification": "Compra verificada",
             "quote": "Los prompts y plantillas me ahorran horas y elevan la calidad de mis piezas."
           }
         },
@@ -56,7 +60,45 @@
           "settings": {
             "author": "Diego M.",
             "location": "Valencia",
+            "when": "Hace 3 semanas",
+            "verification": "Compra verificada",
             "quote": "La estructura es clara, accionable y me dio traccion real en menos de 48h."
+          }
+        },
+        "tool_1": {
+          "type": "tool",
+          "settings": {
+            "name": "ChatGPT"
+          }
+        },
+        "tool_2": {
+          "type": "tool",
+          "settings": {
+            "name": "Midjourney"
+          }
+        },
+        "tool_3": {
+          "type": "tool",
+          "settings": {
+            "name": "DALL·E"
+          }
+        },
+        "tool_4": {
+          "type": "tool",
+          "settings": {
+            "name": "Canva"
+          }
+        },
+        "tool_5": {
+          "type": "tool",
+          "settings": {
+            "name": "Figma"
+          }
+        },
+        "tool_6": {
+          "type": "tool",
+          "settings": {
+            "name": "Zapier"
           }
         },
         "number_1": {
@@ -109,6 +151,12 @@
         "review_1",
         "review_2",
         "review_3",
+        "tool_1",
+        "tool_2",
+        "tool_3",
+        "tool_4",
+        "tool_5",
+        "tool_6",
         "number_1",
         "number_2",
         "number_3",
@@ -136,6 +184,13 @@
         "numbers_title": "Numeros que hablan solos",
         "faq_kicker": "FAQ",
         "faq_title": "Preguntas Frecuentes",
+        "tools_kicker": "COMPATIBLE CON LAS MEJORES HERRAMIENTAS",
+        "tools_title": "Stack compatible",
+        "offer_kicker": "🔥 Oferta por tiempo limitado",
+        "offer_old_price": "€79",
+        "offer_new_price": "€19.99",
+        "offer_save": "AHORRA 75%",
+        "offer_urgency": "Mas de 12 personas estan viendo esto ahora mismo",
         "final_title": "Empieza a Crear con IA Hoy",
         "final_text": "Accede ahora al toolkit y ejecuta un sistema probado para producir, publicar y convertir.",
         "final_cta": "Obtener Acceso Ahora",

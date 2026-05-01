@@ -133,6 +133,7 @@
           <article class="sf-product__review-card" {{ block.shopify_attributes }}>
             <h3>{{ block.settings.author }}</h3>
             <p class="sf-product__review-location">{{ block.settings.location }}</p>
+            <p class="sf-product__review-meta">{{ block.settings.when }} · {{ block.settings.verification }}</p>
             <p>{{ block.settings.quote }}</p>
           </article>
         {% endif %}
@@ -174,10 +175,33 @@
     </div>
   </div>
 
+  <div class="sf-product__tools sf-product__glass">
+    <div class="sf-product__extras-heading">
+      <p>{{ section.settings.tools_kicker }}</p>
+      <h2>{{ section.settings.tools_title }}</h2>
+    </div>
+    <div class="sf-product__tools-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'tool' %}
+          <article class="sf-product__tool-item" {{ block.shopify_attributes }}>
+            {{ block.settings.name }}
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
   <div class="sf-product__final sf-product__glass">
+    <p class="sf-product__offer-kicker">{{ section.settings.offer_kicker }}</p>
     <h2>{{ section.settings.final_title }}</h2>
     <p>{{ section.settings.final_text }}</p>
+    <div class="sf-product__offer-price">
+      <span class="sf-product__offer-old">{{ section.settings.offer_old_price }}</span>
+      <span class="sf-product__offer-new">{{ section.settings.offer_new_price }}</span>
+      <span class="sf-product__offer-save">{{ section.settings.offer_save }}</span>
+    </div>
     <a href="{{ product.url }}?variant={{ current_variant.id }}" class="sf-product__cta">{{ section.settings.final_cta }}</a>
+    <p class="sf-product__offer-urgency">{{ section.settings.offer_urgency }}</p>
   </div>
 </section>
 
@@ -390,6 +414,7 @@
   .sf-product__reviews,
   .sf-product__numbers,
   .sf-product__faq,
+  .sf-product__tools,
   .sf-product__final {
     margin-top: 1rem;
     max-width: 1240px;
@@ -480,6 +505,12 @@
     font-size: 0.85rem;
   }
 
+  .sf-product__review-meta {
+    margin: 0 0 0.55rem;
+    color: #c0d4ea;
+    font-size: 0.8rem;
+  }
+
   .sf-product__number-card {
     text-align: center;
   }
@@ -511,8 +542,65 @@
     margin: 0.6rem 0 0;
   }
 
+  .sf-product__tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .sf-product__tool-item {
+    border: 1px solid rgb(255 255 255 / 14%);
+    border-radius: 12px;
+    background: rgb(15 23 42 / 45%);
+    padding: 0.7rem 0.9rem;
+    text-align: center;
+    color: #dce7f4;
+    font-weight: 600;
+  }
+
   .sf-product__final {
     text-align: center;
+  }
+
+  .sf-product__offer-kicker {
+    margin: 0;
+    color: #ff9d5c;
+    font-weight: 700;
+  }
+
+  .sf-product__offer-price {
+    margin: 0.6rem 0 0.8rem;
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .sf-product__offer-old {
+    text-decoration: line-through;
+    color: #95a4b8;
+  }
+
+  .sf-product__offer-new {
+    color: var(--sf-cyan);
+    font-size: 1.45rem;
+    font-weight: 800;
+  }
+
+  .sf-product__offer-save {
+    border-radius: 999px;
+    padding: 0.2rem 0.65rem;
+    background: rgb(0 245 255 / 14%);
+    color: var(--sf-cyan);
+    font-weight: 700;
+    font-size: 0.82rem;
+  }
+
+  .sf-product__offer-urgency {
+    margin: 0.8rem 0 0;
+    color: #f7b187;
+    font-size: 0.88rem;
   }
 
   .sf-product__final h2 {
@@ -541,6 +629,10 @@
     .sf-product__numbers-grid {
       grid-template-columns: 1fr 1fr;
     }
+
+    .sf-product__tools-grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media screen and (max-width: 620px) {
@@ -550,6 +642,10 @@
 
     .sf-product__reviews-grid,
     .sf-product__numbers-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .sf-product__tools-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -699,6 +795,48 @@
     },
     {
       "type": "text",
+      "id": "tools_kicker",
+      "label": "Tools kicker",
+      "default": "COMPATIBLE CON LAS MEJORES HERRAMIENTAS"
+    },
+    {
+      "type": "text",
+      "id": "tools_title",
+      "label": "Tools titulo",
+      "default": "Stack compatible"
+    },
+    {
+      "type": "text",
+      "id": "offer_kicker",
+      "label": "Oferta kicker",
+      "default": "🔥 Oferta por tiempo limitado"
+    },
+    {
+      "type": "text",
+      "id": "offer_old_price",
+      "label": "Precio anterior",
+      "default": "€79"
+    },
+    {
+      "type": "text",
+      "id": "offer_new_price",
+      "label": "Precio nuevo",
+      "default": "€19.99"
+    },
+    {
+      "type": "text",
+      "id": "offer_save",
+      "label": "Ahorro",
+      "default": "AHORRA 75%"
+    },
+    {
+      "type": "text",
+      "id": "offer_urgency",
+      "label": "Texto urgencia",
+      "default": "Mas de 12 personas estan viendo esto ahora mismo"
+    },
+    {
+      "type": "text",
       "id": "final_title",
       "label": "Titulo cierre",
       "default": "Empieza a Crear con IA Hoy"
@@ -778,6 +916,18 @@
           "default": "Madrid"
         },
         {
+          "type": "text",
+          "id": "when",
+          "label": "Cuando",
+          "default": "Hace 2 semanas"
+        },
+        {
+          "type": "text",
+          "id": "verification",
+          "label": "Verificacion",
+          "default": "Compra verificada"
+        },
+        {
           "type": "textarea",
           "id": "quote",
           "label": "Texto",
@@ -820,6 +970,18 @@
           "default": "Si. Tu compra incluye todas las actualizaciones presentes y futuras sin coste adicional."
         }
       ]
+    },
+    {
+      "type": "tool",
+      "name": "Herramienta",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nombre",
+          "default": "ChatGPT"
+        }
+      ]
     }
   ],
   "presets": [
@@ -855,6 +1017,8 @@
           "settings": {
             "author": "Marcos R.",
             "location": "Madrid",
+            "when": "Hace 2 semanas",
+            "verification": "Compra verificada",
             "quote": "En menos de una semana transforme mi flujo de contenido con resultados visibles."
           }
         },
@@ -863,6 +1027,8 @@
           "settings": {
             "author": "Paula S.",
             "location": "Barcelona",
+            "when": "Hace 1 mes",
+            "verification": "Compra verificada",
             "quote": "Los prompts y plantillas me ahorran horas y elevan la calidad de mis piezas."
           }
         },
@@ -871,8 +1037,34 @@
           "settings": {
             "author": "Diego M.",
             "location": "Valencia",
+            "when": "Hace 3 semanas",
+            "verification": "Compra verificada",
             "quote": "La estructura es clara, accionable y me dio traccion real en menos de 48h."
           }
+        },
+        "tool_1": {
+          "type": "tool",
+          "settings": { "name": "ChatGPT" }
+        },
+        "tool_2": {
+          "type": "tool",
+          "settings": { "name": "Midjourney" }
+        },
+        "tool_3": {
+          "type": "tool",
+          "settings": { "name": "DALL·E" }
+        },
+        "tool_4": {
+          "type": "tool",
+          "settings": { "name": "Canva" }
+        },
+        "tool_5": {
+          "type": "tool",
+          "settings": { "name": "Figma" }
+        },
+        "tool_6": {
+          "type": "tool",
+          "settings": { "name": "Zapier" }
         },
         "number_1": {
           "type": "number",
@@ -917,7 +1109,7 @@
           }
         }
       },
-      "block_order": ["feature_1", "feature_2", "feature_3", "review_1", "review_2", "review_3", "number_1", "number_2", "number_3", "faq_1", "faq_2", "faq_3"]
+      "block_order": ["feature_1", "feature_2", "feature_3", "review_1", "review_2", "review_3", "tool_1", "tool_2", "tool_3", "tool_4", "tool_5", "tool_6", "number_1", "number_2", "number_3", "faq_1", "faq_2", "faq_3"]
     }
   ]
 }

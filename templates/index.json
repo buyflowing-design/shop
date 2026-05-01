@@ -139,6 +139,27 @@
             "question": "How often are products updated?",
             "answer": "Core products are updated regularly as AI and market best practices evolve."
           }
+        },
+        "log_1": {
+          "type": "log_step",
+          "settings": {
+            "title": "Step 1: Expert Extraction",
+            "text": "Extraemos la estrategia de un profesional top."
+          }
+        },
+        "log_2": {
+          "type": "log_step",
+          "settings": {
+            "title": "Step 2: AI Optimization",
+            "text": "Nuestros ingenieros convierten esa estrategia en prompts de alto rendimiento."
+          }
+        },
+        "log_3": {
+          "type": "log_step",
+          "settings": {
+            "title": "Step 3: Flow Delivery",
+            "text": "Te entregamos el sistema listo para usar."
+          }
         }
       },
       "block_order": [
@@ -158,35 +179,51 @@
         "stat_4",
         "faq_1",
         "faq_2",
-        "faq_3"
+        "faq_3",
+        "log_1",
+        "log_2",
+        "log_3"
       ],
       "settings": {
-        "hero_badge": "Hybrid Intelligence Commerce",
+        "hero_badge": "Toolkits de Crecimiento con IA",
         "hero_title": "Escala Mas Inteligente.",
         "hero_title_alt": "Fluye Mas Lejos.",
         "hero_text": "Accede a guias verificadas, toolkits y blueprints de automatizacion para escalar tu negocio con Inteligencia Hibrida.",
-        "hero_cta_label": "Explorar Catalogo",
+        "hero_cta_label": "Explorar la Biblioteca",
         "hero_cta_link": "shopify://collections/all",
+        "hero_secondary_cta_label": "Ver Como Funciona",
+        "hero_secondary_cta_link": "shopify://collections/all",
         "trust_1": "Verificado por expertos",
         "trust_2": "Descarga instantanea",
         "trust_3": "Mas de 10,000 fundadores",
-        "lab_kicker": "The Lab",
+        "lab_kicker": "El Laboratorio",
         "lab_title": "Impulsado por Inteligencia Hibrida",
         "lab_text": "Combinamos el juicio irremplazable de expertos humanos con la velocidad de la IA para generar estrategias que realmente funcionan.",
-        "featured_kicker": "Featured Streams",
+        "featured_kicker": "Streams",
         "featured_title": "Elige Tu Stream",
         "featured_text": "Cada toolkit esta construido para un unico objetivo: crecimiento medible.",
+        "stream_cta_label": "Explorar Stream",
         "featured_collection": "all",
         "featured_products_limit": 3,
         "proof_kicker": "Por que Scale Flow",
         "proof_title": "Por que los fundadores eligen Scale Flow",
         "proof_text": "Construido por operadores, validado en las trincheras y respaldado por miles de fundadores.",
-        "faq_kicker": "Scale Clarity",
+        "faq_kicker": "Preguntas Frecuentes",
         "faq_title": "Todo Lo Que Necesitas Saber",
+        "faq_text": "Sin rodeos - solo respuestas.",
+        "faq_contact_text": "¿Aun tienes preguntas?",
+        "faq_contact_label": "Contactanos ->",
+        "faq_contact_link": "shopify://pages/contact",
+        "closing_kicker": "Tu Proximo Paso",
         "closing_title": "¿Listo para Escalar Mas Inteligente?",
         "closing_text": "Activa tus sistemas y transforma tu crecimiento con playbooks accionables desde hoy.",
-        "closing_cta_label": "Explorar Catalogo",
+        "closing_cta_label": "Empieza a Escalar Ahora",
         "closing_cta_link": "shopify://collections/all",
+        "log_title": "The Flow Lab Log",
+        "newsletter_title": "Unete a nuestra lista de correo",
+        "newsletter_text": "Consigue ofertas exclusivas y acceso anticipado a nuevos productos.",
+        "newsletter_placeholder": "Tu email",
+        "newsletter_button": "Suscribirme",
         "padding-block-start": 24,
         "padding-block-end": 24
       }
