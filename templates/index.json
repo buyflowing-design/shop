@@ -114,6 +114,27 @@
             "question": "¿Tengo acceso de por vida?",
             "answer": "Si. Incluye acceso de por vida y actualizaciones futuras."
           }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Necesito experiencia técnica para aplicar los sistemas?",
+            "answer": "No. Estan diseñados para implementarse paso a paso, incluso si no tienes perfil técnico."
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cuándo veo resultados?",
+            "answer": "Depende de tu ejecución, pero la mayoría de alumnos implementa mejoras visibles en los primeros 7-14 días."
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Las guías se actualizan con nuevas herramientas de IA?",
+            "answer": "Sí. Actualizamos los playbooks con frecuencia para mantenerlos alineados con las herramientas y tácticas más efectivas."
+          }
         }
       },
       "block_order": [
@@ -129,7 +150,10 @@
         "proof_4",
         "faq_1",
         "faq_2",
-        "faq_3"
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
       ],
       "settings": {
         "hero_badge": "TOOLKITS DE CRECIMIENTO CON IA",
