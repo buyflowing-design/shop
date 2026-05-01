@@ -114,6 +114,21 @@
   border-top-color: rgb(255 255 255 / 12%) !important;
 }
 
+.sf-shell-ready .utilities .footer-policy-list,
+.sf-shell-ready .utilities [class*='policy-list'],
+.sf-shell-ready .utilities a[href*='/policies/'] {
+  justify-self: end !important;
+  text-align: right !important;
+  margin-left: auto;
+}
+
+@media screen and (min-width: 750px) {
+  .sf-shell-ready .utilities--blocks-3 > *:nth-child(2) {
+    justify-self: end !important;
+    text-align: right !important;
+  }
+}
+
 /* Cart page */
 .sf-shell-ready .cart-page,
 .sf-shell-ready .cart-page .section,
@@ -315,6 +330,34 @@
   color: #031018 !important;
   border-color: transparent !important;
   box-shadow: 0 0 20px rgb(0 245 255 / 24%);
+}
+
+/* Policy pages */
+.sf-shell-ready .content-for-layout[data-template*='policy'],
+.sf-shell-ready body:has(.shopify-policy__container) .content-for-layout {
+  background: #050505 !important;
+  color: #ffffff !important;
+  position: relative;
+}
+
+.sf-shell-ready .shopify-policy__container {
+  max-width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem);
+  color: #ffffff !important;
+}
+
+.sf-shell-ready .shopify-policy__container :is(h1, h2, h3, h4, p, li, a, span, strong) {
+  color: #ffffff !important;
+}
+
+.sf-shell-ready .shopify-policy__container h1 {
+  font-family: Outfit, Inter, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.sf-shell-ready .shopify-policy__container a {
+  color: #00f5ff !important;
 }
 
 /* Neon icon language */
