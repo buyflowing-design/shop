@@ -167,6 +167,11 @@
   box-shadow: 0 0 20px rgb(0 245 255 / 24%);
 }
 
+.sf-shell-ready .cart-page :is(button, .button, [type='submit']):hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 24px rgb(0 245 255 / 32%);
+}
+
 /* Cart drawer */
 .sf-shell-ready .cart-drawer__dialog,
 .sf-shell-ready .cart-drawer__inner,
@@ -209,6 +214,11 @@
   box-shadow: 0 0 20px rgb(0 245 255 / 24%);
 }
 
+.sf-shell-ready .cart-drawer .cart__checkout-button.button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 24px rgb(0 245 255 / 32%);
+}
+
 .sf-shell-ready .cart-drawer .cart__checkout-button.button[disabled] {
   opacity: 0.85 !important;
 }
@@ -216,6 +226,49 @@
 .sf-shell-ready .cart-drawer [class*='price'] {
   color: #00f5ff !important;
   text-shadow: 0 0 10px rgb(0 245 255 / 32%);
+}
+
+/* Cart template page */
+.sf-shell-ready .content-for-layout[data-template*='cart'] {
+  background: #050505 !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .section-background,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .section {
+  background: transparent !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] :is(h1, h2, h3, h4, p, a, span, label, summary) {
+  color: #ffffff;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] [class*='price'],
+.sf-shell-ready .content-for-layout[data-template*='cart'] .cart__totals-value {
+  color: #00f5ff !important;
+  text-shadow: 0 0 10px rgb(0 245 255 / 30%);
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .cart-page__items,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .cart-page__summary,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .cart-page__more-blocks {
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 22px;
+  background: linear-gradient(150deg, rgb(15 23 42 / 72%), rgb(15 23 42 / 54%));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%);
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector {
+  border: 1px solid rgb(0 245 255 / 48%) !important;
+  background: linear-gradient(90deg, rgb(0 245 255 / 18%), rgb(99 102 241 / 22%)) !important;
+  color: #eaffff !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector :is(.quantity-minus, .quantity-plus) {
+  color: #00f5ff !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .quantity-selector input[type='number'] {
+  color: #ffffff !important;
 }
 
 /* Keep cart drawer above header without blocking interactions */
