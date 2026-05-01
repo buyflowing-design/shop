@@ -343,8 +343,43 @@
   color: #00f5ff !important;
   text-shadow: 0 0 12px rgb(0 245 255 / 35%);
   font-family: Outfit, Inter, sans-serif !important;
-  font-size: 1rem !important;
-  font-weight: 700 !important;
+  font-size: clamp(1.18rem, 2.2vw, 1.45rem) !important;
+  font-weight: 800 !important;
+}
+
+.sf-shell-ready .product-recommendations .resource-list__item .compare-at-price,
+.sf-shell-ready .product-recommendations .resource-list__item s,
+.sf-shell-ready .product-recommendations .resource-list__item .price-item--regular {
+  color: rgb(210 224 244 / 72%) !important;
+  text-decoration-color: rgb(210 224 244 / 62%) !important;
+  font-size: 0.98rem !important;
+  font-weight: 600 !important;
+}
+
+.sf-shell-ready .product-recommendations .resource-list__item .price-item--sale,
+.sf-shell-ready .product-recommendations .resource-list__item .price__sale .price {
+  color: #00f5ff !important;
+  text-shadow: 0 0 12px rgb(0 245 255 / 35%);
+}
+
+.sf-shell-ready .product-recommendations .quick-add__button,
+.sf-shell-ready .product-recommendations .add-to-cart-button {
+  background: linear-gradient(90deg, #00f5ff, #6366f1) !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  box-shadow: 0 0 16px rgb(0 245 255 / 30%);
+}
+
+.sf-shell-ready .product-recommendations .quick-add__button :is(.add-to-cart-text, .add-to-cart-text__content, span),
+.sf-shell-ready .product-recommendations .add-to-cart-button :is(.add-to-cart-text, .add-to-cart-text__content, span) {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.sf-shell-ready .product-recommendations .quick-add__button :is(svg, path),
+.sf-shell-ready .product-recommendations .add-to-cart-button :is(svg, path) {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
 }
 
 /* Collection pages */
