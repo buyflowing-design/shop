@@ -525,6 +525,21 @@
   display: none !important;
 }
 
+/* Ensure only one quick-add button variant is visible */
+.sf-shell-ready .content-for-layout[data-template*='cart']
+  :is(.ui-test-product-list, [data-testid='product-list'])
+  quick-add-component[data-quick-add-button='add']
+  .quick-add__button--choose {
+  display: none !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart']
+  :is(.ui-test-product-list, [data-testid='product-list'])
+  quick-add-component[data-quick-add-button='choose']
+  .quick-add__button--add {
+  display: none !important;
+}
+
 .sf-shell-ready .product-recommendations .quick-add__button :is(svg, path),
 .sf-shell-ready .product-recommendations .add-to-cart-button :is(svg, path) {
   fill: #ffffff !important;
