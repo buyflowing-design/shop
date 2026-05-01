@@ -440,6 +440,68 @@
   letter-spacing: 0.01em;
 }
 
+/* Recommended cards on /cart use product-list, not product-recommendations */
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .quick-add__button,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .add-to-cart-button {
+  background: linear-gradient(90deg, #00f5ff, #6366f1) !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  box-shadow: 0 0 16px rgb(0 245 255 / 30%) !important;
+  width: 44px !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  border-radius: 999px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: width 0.2s ease, padding 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .quick-add__button :is(.add-to-cart-text, .add-to-cart-text__content, span),
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .add-to-cart-button :is(.add-to-cart-text, .add-to-cart-text__content, span) {
+  color: transparent !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  max-width: 0 !important;
+  overflow: hidden !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .quick-add__button .add-to-cart-icon,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .add-to-cart-button .add-to-cart-icon,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .quick-add__button .add-to-cart-text__content,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .add-to-cart-button .add-to-cart-text__content {
+  display: none !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .quick-add__button::before,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .add-to-cart-button::before {
+  content: "+";
+  color: #ffffff;
+  font: 800 1.35rem / 1 Outfit, Inter, sans-serif;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .quick-add__button:hover,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .quick-add__button:focus-visible,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .add-to-cart-button:hover,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .add-to-cart-button:focus-visible {
+  width: 112px !important;
+  min-width: 112px !important;
+  padding: 0 0.95rem !important;
+  box-shadow: 0 0 20px rgb(0 245 255 / 40%) !important;
+}
+
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .quick-add__button:hover::before,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .quick-add__button:focus-visible::before,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .add-to-cart-button:hover::before,
+.sf-shell-ready .content-for-layout[data-template*='cart'] .product-list .add-to-cart-button:focus-visible::before {
+  content: "Añadir";
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+}
+
 .sf-shell-ready .product-recommendations .quick-add__button :is(svg, path),
 .sf-shell-ready .product-recommendations .add-to-cart-button :is(svg, path) {
   fill: #ffffff !important;
