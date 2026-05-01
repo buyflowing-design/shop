@@ -46,6 +46,21 @@
   color: #e7f2ff !important;
 }
 
+.sf-shell-ready .header a:hover,
+.sf-shell-ready .header button:hover,
+.sf-shell-ready .header summary:hover,
+.sf-shell-ready .header .menu__item:hover,
+.sf-shell-ready .header .header-actions__action:hover,
+.sf-shell-ready .header a:focus-visible,
+.sf-shell-ready .header button:focus-visible,
+.sf-shell-ready .header summary:focus-visible,
+.sf-shell-ready .header .menu__item:focus-visible,
+.sf-shell-ready .header .header-actions__action:focus-visible {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
 /* Footer */
 .sf-shell-ready footer,
 .sf-shell-ready footer .section-wrapper,
