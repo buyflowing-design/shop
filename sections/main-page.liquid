@@ -71,8 +71,10 @@
 
   .sf-contact-fallback .section-content-wrapper {
     position: relative;
-    width: 100%;
+    width: 100vw !important;
+    margin-inline: calc(50% - 50vw);
     max-width: none !important;
+    padding-block: clamp(2.5rem, 8vw, 5rem);
   }
 
   .sf-contact-fallback .sfc__bg {
