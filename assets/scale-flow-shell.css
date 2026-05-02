@@ -133,6 +133,7 @@
   border: 0 !important;
   box-shadow: none !important;
   border-radius: 0 !important;
+  padding: 0 !important;
 }
 
 .sf-shell-ready #header-component[data-menu-style='drawer'] .header-drawer-icon,
@@ -141,6 +142,12 @@
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
+}
+
+.sf-shell-ready #header-component[data-menu-style='drawer'] #Details-menu-drawer-container > summary.header__icon::before,
+.sf-shell-ready #header-component[data-menu-style='drawer'] #Details-menu-drawer-container > summary.header__icon::after {
+  content: none !important;
+  display: none !important;
 }
 
 /* Footer */
