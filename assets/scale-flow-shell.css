@@ -103,6 +103,10 @@
   color: #eaf4ff !important;
 }
 
+.sf-shell-ready #header-component[data-menu-style='drawer'] .menu-drawer :is(h1, h2, h3, h4, h5, h6, p, span, a, label) {
+  color: #eaf4ff !important;
+}
+
 .sf-shell-ready #header-component[data-menu-style='drawer'] .menu-drawer :is(details[open], .details[open], .details-content) {
   background: rgb(5 12 26 / 68%) !important;
 }
