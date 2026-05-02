@@ -14,55 +14,55 @@
         "feature_1": {
           "type": "feature",
           "settings": {
-            "emoji": "🎨",
-            "title": "Guia maestra de prompts visuales",
-            "text": "Prompts probados para Midjourney y DALL-E con resultados profesionales."
+            "emoji": "🧭",
+            "title": "Sección 1: Introducción al Flujo",
+            "text": "Ingeniería de negocios digitales, mapa de ruta de escalado y navegación completa del sistema Scale Flow."
           }
         },
         "feature_2": {
           "type": "feature",
           "settings": {
-            "emoji": "🤖",
-            "title": "Flujos de trabajo con ChatGPT",
-            "text": "Secuencias de prompts para generar copys y guiones en menos tiempo."
+            "emoji": "⚙️",
+            "title": "Sección 2: The Engine (5 Módulos)",
+            "text": "Foundation & Market Engineering, Product Engineering with AI, Shopify Operations, Traffic Engine y Optimización."
           }
         },
         "feature_3": {
           "type": "feature",
           "settings": {
-            "emoji": "♾️",
-            "title": "Actualizaciones de por vida",
-            "text": "Actualizaciones continuas para mantenerte al dia con nuevas herramientas."
+            "emoji": "🚀",
+            "title": "Sección 3: Recursos de Valor Extremo",
+            "text": "Stack tecnológico recomendado, métricas y KPIs, videos clave, evidencias y prompts maestros listos para ejecutar."
           }
         },
         "review_1": {
           "type": "review",
           "settings": {
-            "author": "Marcos R.",
-            "location": "Madrid",
-            "when": "Hace 2 semanas",
+            "author": "Laura G.",
+            "location": "Barcelona",
+            "when": "Hace 10 días",
             "verification": "Compra verificada",
-            "quote": "En menos de una semana transforme mi flujo de contenido con resultados visibles."
+            "quote": "Pasé de vender servicios sueltos a empaquetar mi conocimiento en productos digitales. El módulo de validación con IA me ahorró semanas."
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "author": "Paula S.",
-            "location": "Barcelona",
-            "when": "Hace 1 mes",
+            "author": "Adrián M.",
+            "location": "Madrid",
+            "when": "Hace 3 semanas",
             "verification": "Compra verificada",
-            "quote": "Los prompts y plantillas me ahorran horas y elevan la calidad de mis piezas."
+            "quote": "La parte de Shopify + automatización está impecable. Monté el sistema sin stock y con márgenes mucho mejores que en físico."
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
-            "author": "Diego M.",
-            "location": "Valencia",
-            "when": "Hace 3 semanas",
+            "author": "Nuria P.",
+            "location": "Sevilla",
+            "when": "Hace 1 mes",
             "verification": "Compra verificada",
-            "quote": "La estructura es clara, accionable y me dio traccion real en menos de 48h."
+            "quote": "No es teoría: son pasos accionables. Los prompts maestros me ayudan a ejecutar el 80% del trabajo de investigación y marketing."
           }
         },
         "tool_1": {
@@ -174,11 +174,11 @@
         "cta_text": "Obtener acceso ahora",
         "security_text": "Pago seguro · 30 dias de garantia",
         "extras_kicker": "Lo que obtienes",
-        "extras_title": "Todo lo que incluye el toolkit",
-        "extras_text": "Un arsenal completo para ejecutar resultados reales con inteligencia hibrida.",
+        "extras_title": "Todo lo que incluye el Master PDF",
+        "extras_text": "Sistema integral en 4 secciones macro y 19 apartados de implementación directa para escalar ecommerce digital sin stock.",
         "ticker_text": "⚡ +12.000 fundadores ya estan escalando · 🔥 247 copias vendidas este mes · ⭐ Valoracion media 4.9/5",
         "reviews_kicker": "RESEÑAS VERIFICADAS",
-        "reviews_title": "Lo que dicen nuestros clientes",
+        "reviews_title": "Lo que dicen fundadores que ya escalan",
         "reviews_text": "Valoracion media 4.9 basada en cientos de opiniones verificadas.",
         "numbers_kicker": "IMPACTO",
         "numbers_title": "Numeros que hablan solos",
