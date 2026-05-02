@@ -86,6 +86,33 @@
   box-shadow: none !important;
 }
 
+/* Mobile nav drawer (categories) */
+.sf-shell-ready #header-component[data-menu-style='drawer'] :is(.menu-drawer, .menu-drawer__navigation, .menu-drawer__menu, .menu-drawer-container),
+.sf-shell-ready .header-drawer .menu-drawer,
+.sf-shell-ready .header-drawer .menu-drawer__navigation {
+  background: linear-gradient(150deg, rgb(12 22 43 / 96%), rgb(9 17 34 / 94%)) !important;
+  color: #eaf4ff !important;
+}
+
+.sf-shell-ready #header-component[data-menu-style='drawer'] .menu-drawer {
+  border-left: 1px solid rgb(0 245 255 / 24%) !important;
+  box-shadow: -12px 0 28px rgb(0 0 0 / 45%), inset 0 1px 0 rgb(255 255 255 / 8%) !important;
+}
+
+.sf-shell-ready #header-component[data-menu-style='drawer'] :is(.menu-drawer__menu-item, .menu-drawer__menu-item-text, .menu-drawer__close-button, .menu-drawer a, .menu-drawer summary) {
+  color: #eaf4ff !important;
+}
+
+.sf-shell-ready #header-component[data-menu-style='drawer'] .menu-drawer :is(details[open], .details[open], .details-content) {
+  background: rgb(5 12 26 / 68%) !important;
+}
+
+.sf-shell-ready #header-component[data-menu-style='drawer'] .menu-drawer .icon-plus svg,
+.sf-shell-ready #header-component[data-menu-style='drawer'] .menu-drawer .svg-wrapper svg {
+  color: #00f5ff !important;
+  filter: drop-shadow(0 0 8px rgb(0 245 255 / 45%));
+}
+
 /* Footer */
 .sf-shell-ready footer,
 .sf-shell-ready footer .section-wrapper,
@@ -223,6 +250,18 @@
 
 .sf-shell-ready .cart-drawer .cart__checkout-button.button[disabled] {
   opacity: 0.85 !important;
+}
+
+.sf-shell-ready .cart-drawer :is(.button-secondary, .button--secondary, button.button-secondary) {
+  background: rgb(10 18 36 / 92%) !important;
+  color: #eaf4ff !important;
+  border: 1px solid rgb(0 245 255 / 28%) !important;
+  box-shadow: 0 0 12px rgb(0 245 255 / 16%) !important;
+}
+
+.sf-shell-ready .cart-drawer :is(.button-secondary, .button--secondary, button.button-secondary):hover {
+  border-color: rgb(0 245 255 / 46%) !important;
+  color: #ffffff !important;
 }
 
 .sf-shell-ready .cart-drawer [class*='price'] {
