@@ -984,6 +984,26 @@
   ) !important;
 }
 
+/*
+ * Ocultar la ficha PagePilot solo cuando ya hay Scale Flow en <main>.
+ * Quitamos PagePilot en producto antes y la tienda vacía solo tenía contenido PP.
+ */
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product'] .sfp)
+  .pp-wrapper
+  .shopify-section:has(.pp-product-information) {
+  display: none !important;
+}
+
+/* Solo PagePilot en producto (sin .sfp en main): fondo tema oscuro básico */
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']):not(:has(main .sfp)) .pp-wrapper {
+  background: var(--sf-bg) !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']):not(:has(main .sfp)) .pp-wrapper .pp-product-information,
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']):not(:has(main .sfp)) .pp-wrapper .pp-product-details {
+  background: var(--sf-bg) !important;
+}
+
 /* Policy pages */
 .sf-shell-ready .content-for-layout[data-template*='policy'],
 .sf-shell-ready body:has(.shopify-policy__container) .content-for-layout {
