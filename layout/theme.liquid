@@ -138,8 +138,14 @@
   
 {% comment %}@pp theme 1.0.3{% endcomment %}
 {% comment %}@pp-replace-start{% endcomment %}
-{% render 'pagepilot-assets' %}
-<div class="pp-wrapper pp:@container">{% sections 'pagepilot' %}</div>
+{% comment %}
+  Scale Flow: en producto usar solo templates/product.json (scale-flow-product en <main>).
+  PagePilot vive fuera de main y duplicaba / sustituía la ficha en muchos productos.
+{% endcomment %}
+{% unless template.name == 'product' %}
+  {% render 'pagepilot-assets' %}
+  <div class="pp-wrapper pp:@container">{% sections 'pagepilot' %}</div>
+{% endunless %}
 {% comment %}@pp-replace-end{% endcomment %}
 </body>
 </html>
