@@ -984,6 +984,66 @@
   ) !important;
 }
 
+/*
+ * PagePilot: las secciones PP se inyectan en .pp-wrapper FUERA de <main>,
+ * por eso el fondo blanco no heredaba los overrides de plantilla producto.
+ */
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper {
+  background: var(--sf-bg) !important;
+  background-color: var(--sf-bg) !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper > .shopify-section.pagepilot-section,
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper > .shopify-section {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-product-information,
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-product-details {
+  background: var(--sf-bg) !important;
+  background-color: var(--sf-bg) !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-accordion-row {
+  background: rgb(15 23 42 / 45%) !important;
+  border: 1px solid rgb(255 255 255 / 12%) !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-text {
+  color: #eaf4ff !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-text :is(p, h1, h2, h3, h4, li, span, strong, em, div) {
+  color: #eaf4ff !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-text a {
+  color: var(--sf-cyan) !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-price {
+  color: var(--sf-cyan) !important;
+  text-shadow: 0 0 14px rgb(0 245 255 / 35%);
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-compare-at-price {
+  color: #94a3b8 !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-reviews-number [class*='pp:text-'] {
+  color: #eaf4ff !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-accordion-row summary [class*='pp:text-'] {
+  color: #ffffff !important;
+}
+
+.sf-shell-ready body:has(main.content-for-layout[data-template*='product']) .pp-wrapper .pp-payment-icons > img {
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
 /* Policy pages */
 .sf-shell-ready .content-for-layout[data-template*='policy'],
 .sf-shell-ready body:has(.shopify-policy__container) .content-for-layout {
