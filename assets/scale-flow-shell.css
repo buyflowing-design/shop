@@ -921,6 +921,69 @@
   box-shadow: 0 0 20px rgb(0 245 255 / 24%);
 }
 
+/* Product page: plantillas nativas/importadas (p. ej. product-information) */
+.sf-shell-ready main.content-for-layout[data-template*='product'] {
+  background: var(--sf-bg) !important;
+  color: #eaf4ff;
+}
+
+.sf-shell-ready main.content-for-layout[data-template*='product'] > .shopify-section {
+  background: transparent !important;
+}
+
+.sf-shell-ready main.content-for-layout[data-template*='product'] > .shopify-section .section-background {
+  background: var(--sf-bg) !important;
+}
+
+.sf-shell-ready main.content-for-layout[data-template*='product'] [class^='color-'] {
+  --color-background: rgb(5 5 5) !important;
+  --color-background-rgb: 5 5 5 !important;
+  --color-background-secondary: rgb(15 23 42 / 72%) !important;
+  --color-foreground: rgb(234 244 255) !important;
+  --color-foreground-rgb: 234 244 255 !important;
+  --color-foreground-heading: rgb(255 255 255) !important;
+  --color-foreground-heading-rgb: 255 255 255 !important;
+  --color-border: rgb(255 255 255 / 14%) !important;
+  --color-input-background: rgb(8 15 30 / 85%) !important;
+  --color-input-text: rgb(240 247 255) !important;
+  --color-input-border: rgb(255 255 255 / 22%) !important;
+  --color-variant-background: rgb(15 23 42 / 55%) !important;
+  --color-variant-border: rgb(255 255 255 / 18%) !important;
+  --color-variant-text: rgb(234 244 255) !important;
+}
+
+.sf-shell-ready main.content-for-layout[data-template*='product'] .product-details :is(h1, h2, h3, .product-title),
+.sf-shell-ready main.content-for-layout[data-template*='product'] .product-details .price {
+  color: #ffffff !important;
+}
+
+.sf-shell-ready main.content-for-layout[data-template*='product']
+  > .shopify-section:first-child .product-information.spacing-style {
+  padding-block-start: calc(var(--padding-block-start, 0px) + 1rem) !important;
+}
+
+.sf-shell-ready body:has(#header-component[transparent])
+  main.content-for-layout[data-template*='product']
+  > .shopify-section:first-child
+  .product-information.spacing-style {
+  padding-block-start: calc(
+    var(--padding-block-start, 0px) + var(--header-group-height, 72px) + 1.25rem
+  ) !important;
+}
+
+.sf-shell-ready main.content-for-layout[data-template*='product'] > .shopify-section:first-child .sfp.spacing-style {
+  padding-block-start: calc(var(--padding-block-start, 0px) + 1rem) !important;
+}
+
+.sf-shell-ready body:has(#header-component[transparent])
+  main.content-for-layout[data-template*='product']
+  > .shopify-section:first-child
+  .sfp.spacing-style {
+  padding-block-start: calc(
+    var(--padding-block-start, 0px) + var(--header-group-height, 72px) + 1.25rem
+  ) !important;
+}
+
 /* Policy pages */
 .sf-shell-ready .content-for-layout[data-template*='policy'],
 .sf-shell-ready body:has(.shopify-policy__container) .content-for-layout {
